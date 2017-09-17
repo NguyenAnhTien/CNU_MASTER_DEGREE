@@ -49,7 +49,6 @@ function g = intrans(f, varargin)
     otherwise
         error('Unknown enhancement method.')
     end
-    class(g)
     % Convert to the class of the input image.
     g = changeclass(classin, g);
 end

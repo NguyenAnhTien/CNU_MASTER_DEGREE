@@ -176,6 +176,15 @@
     \end{itemize}
 \end{itemize}
 
+\textbf{\textit{imadjust(f, [0 1], [1 0])}} function do a operations as same as \
+\textit{imcomplement} function. The function converts the intensity values \
+between 0 and 1 to values between 1 and 0. Therefore, the dark pixel will \
+become more darker and the bright pixel will become brighter.\\ 
+
+In the \textbf{\textit{imadjust(f, [ ], [ ], 2)}}, the gamma is greater \ 
+than 1, it means the mapping is weighted toward lower (darker) output values.
+
+
 \textbf{\textit{stretchlim}} function:
 \begin{itemize}
     \item Find limits to contrast stretch image.
@@ -224,6 +233,19 @@
 
 \matlabscript{changeclass}{changeclass function}
 
+\matlabscript{example_figure_3_6_b}{Using intrans function}
+
+In our contex, the class of the image is not double. Therefore, the \ 
+\textbf{\textit{intrans}} function converts the image to double class.
+The first parameter \textbf{varargin{1}} is '\textbf{stretch}', so the \
+function apply \textbf{contrast-stretching} transformation function to \
+the image. The \textbf{contrast-stretching} transformation function \ 
+compresses the input levels lower than \textbf{m} into a narrow range \
+of dark levels in the output image; similarly, it compresses the values \
+above m into a narrow band of light levels in the output. The output is \
+a binary image which has higher contrast. \textbf{\textit{length(varargin)}} \
+equals to 3, so m is mean of the image\ and E equals to 0.9.
+
 \newpage
 \begin{figure}[h]
 \centering
@@ -235,7 +257,7 @@
     \begin{subfigure}[h]{0.5\textwidth}
         \centering
         \includegraphics[height=2in]{figure_3_6_b.jpg}
-        \caption{Using block code 2 or 3}
+        \caption{Using intrans function}
     \end{subfigure}%
 \end{figure}
 \end{homeworkProblem}
@@ -246,9 +268,9 @@
 %----------------------------------------------------------------------------------------
 \newpage
 \begin{homeworkProblem}
-\matlabscript{example_figure_3_7_a}{Another M-Function for Intensity Transformations}
-\matlabscript{twomodegauss}{changeclass function}
-\matlabscript{manualhist}{changeclass function}
+\matlabscript{example_figure_3_7_a}{Histogram}
+\matlabscript{twomodegauss}{\textbf{twomodegauss} function}
+\matlabscript{manualhist}{Using \textbf{twomodegauss} function}
 
 \newpage
 \begin{figure}[h]
@@ -256,25 +278,20 @@
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in]{figure_3_7_a.jpg}
-        \caption{Original Image}
+        \caption{Using Block Code 1}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in]{figure_3_7_b.jpg}
-        \caption{Using block code 2 or 3}
+        \caption{Using block code 2}
     \end{subfigure}%
 \end{figure}
 \begin{figure}[h]
 \centering
     \begin{subfigure}[h]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.2in]{figure_3_7_c.jpg}
-        \caption{Using block code 2 or 3}
-    \end{subfigure}%
-    \begin{subfigure}[h]{0.3\textwidth}
-        \centering
         \includegraphics[height=1.2in]{figure_3_7_d.jpg}
-        \caption{Using block code 2 or 3}
+        \caption{Using block code 3}
     \end{subfigure}%
     \begin{subfigure}[h]{0.3\textwidth}
         \centering
