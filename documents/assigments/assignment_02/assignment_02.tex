@@ -12,6 +12,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage[utf8]{inputenc}
 
 \graphicspath{ {../../../datasets/images/chapter_02/} }
 
@@ -164,7 +165,9 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-\matlabscript{exercise_02_04_01}{Exercise 2.4.1}
+\maketitle
+\subsection{Exercise 2.4.1}
+\matlabscript{exercise_02_04_01}{Source codes}
 
 \newpage
 \newpage
@@ -178,38 +181,76 @@
 \newpage
 
 \begin{figure}[h]
-    \begin{subfigure}[t]{0.3\textwidth}
+\centering
+    \begin{subfigure}[h]{0.5\textwidth}
         \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_02.jpg}
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_02.jpg}
         \caption{C=0.1}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_03.jpg}
-        \caption{C=0.2}
     \end{subfigure}\\
-    \begin{subfigure}[t]{0.3\textwidth}
+    \begin{subfigure}[h]{0.5\textwidth}
         \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_04.jpg}
-        \caption{C=0.5}
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_03.jpg}
+        \caption{C=0.2}
     \end{subfigure}
-    \begin{subfigure}[t]{0.3\textwidth}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[h]{0.5\textwidth}
         \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_05.jpg}
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_04.jpg}
+        \caption{C=0.5}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_05.jpg}
         \caption{C=1}
     \end{subfigure}\\
-    \begin{subfigure}[t]{0.3\textwidth}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[h]{0.5\textwidth}
         \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_06.jpg}
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_06.jpg}
         \caption{C=2}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
+    \end{subfigure}\\
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[h]{0.5\textwidth}
         \centering
-        \includegraphics[height=1.2in]{exercise_02_04_01_fig_07.jpg}
+        \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_07.jpg}
         \caption{C=20}
     \end{subfigure}%
 \end{figure}
 \end{homeworkProblem}
+
+\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=3in]{exercise_02_04_01_fig_08.jpg}
+    \caption{Testing and Training Errors}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}| }
+\hline
+\multicolumn{7}{|c|}{Testing and Training Errors} \\
+\hline
+               & C=0.1 & C=0.2 & C=0.5 & C=1 & C=2 & C=20 \\
+\hline
+Training error & 0.0225 & 0.0200 & 0.0200 & 0.0225 & 0.0200 & 0.0250 \\
+Testing error & 0.0325 & 0.0300 & 0.0325 & 0.0325 & 0.0350 & 0.0350 \\
+Margin & 0.9414 & 0.8147 & 0.7085 & 0.6318 & 0.5783 & 0.3573 \\
+No. support vectors  & 82 & 61 & 44 & 37 & 33 & 25\\
+\hline
+\end{tabular}
+\end{center}
 
 %----------------------------------------------------------------------------------------
 

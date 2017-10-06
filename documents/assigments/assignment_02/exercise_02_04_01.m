@@ -49,38 +49,3 @@ sup_vec=sum(alpha>0)
 % Compute the margin
 marg=2/sqrt(sum(w.^2))
 
-%C=0.1
-%Training Error = 0.0225
-%Testing error = 0.0325
-%Margin = 0.9414
-%No. support vectors = 82
-
-%C=0.2
-%Training Error = 0.0200
-%Testing error = 0.0300
-%Margin = 0.8147
-%No. support vectors = 61
-
-%C=0.5
-%Training Error = 0.0200
-%Testing error = 0.0325
-%Margin = 0.7085
-%No. support vectors = 44
-
-%C=1
-%Training Error = 0.0225
-%Testing error = 0.0325
-%Margin = 0.6318
-%No. support vectors = 37
-
-%C=2
-%Training Error = 0.0200
-%Testing error = 0.0350
-%Margin = 0.5783
-%No. support vectors = 33
-
-%C=20
-%Training Error = 0.0250
-%Testing error = 0.0350
-%Margin = 0.3573
-%No. support vectors = 25
