@@ -30,7 +30,8 @@ tol=0.001;
 steps=100000;
 eps=10^(-10);
 method=0;
-[alpha, w0, w, evals, stp, glob] = SMO2(X1', y1',kernel, kpar1, kpar2, C, tol, steps, eps, method);
+[alpha, w0, w, evals, stp, glob] = SMO2(X1', y1',kernel, kpar1, kpar2, C, tol,\
+                                        steps, eps, method);
 
 % Compute the classification error on the training set
 Pe_tr=sum((2*(w*X1-w0>0)-1).*y1<0)/length(y1)
