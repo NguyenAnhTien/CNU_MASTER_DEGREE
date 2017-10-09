@@ -64,7 +64,7 @@ randn('seed',100)
 iter=9000; %Number of iterations
 code=1; %Code for the chosen training algorithm
 k=4; %number of hidden layer nodes
-lr=0.0001; %learning rate
+lr=0.01; %learning rate
 par_vec=[lr 0 0 0 0];
 [net,tr]=NN_training(X1,y1,k,code,iter,par_vec);
 
@@ -86,14 +86,14 @@ figure(fig_num), plot(X1(1,y1==1),X1(2,y1==1),'r.', X1(1,y1==-1),X1(2,y1==-1),'b
 figure(3), plot(tr.perf)
 pause
 
-% 4. In this case, we also work as in step 2 with the following changes
-iter=6000; %Number of iterations
-code=3; %Code for the chosen training algorithm
-k=4; %number of hidden layer nodes
-lr=.01; %learning rate
-par_vec=[lr 0 1.05 0.7 1.04]; %Parameter vector
-[net,tr]=NN_training(X1,y1,k,code,iter,par_vec);
-
-% Compute the training and the test errors
-pe_train=NN_evaluation(net,X1,y1)
-pe_test=NN_evaluation(net,X2,y2)
+% % 4. In this case, we also work as in step 2 with the following changes
+% iter=6000; %Number of iterations
+% code=3; %Code for the chosen training algorithm
+% k=4; %number of hidden layer nodes
+% lr=0.0001; %learning rate
+% par_vec=[lr 0 1.05 0.7 1.04]; %Parameter vector
+% [net,tr]=NN_training(X1,y1,k,code,iter,par_vec);
+% 
+% % Compute the training and the test errors
+% pe_train=NN_evaluation(net,X1,y1)
+% pe_test=NN_evaluation(net,X2,y2)

@@ -402,10 +402,253 @@ Misclassifications & 32 & 34 & 33 & 29 & 32 \\
 \end{figure}
 
 \end{homeworkProblem}
+
 %-------------END PROBLEM 2--------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{homeworkProblem}
+\maketitle
+\subsection{Exercise 2.7.1}
+\matlabscript{mfiles/exercise_02_07_01}{Source codes}
+
+\newpage
+\subsubsection{$s=2$}
+Consider a 2-class 2-dimensional classification task, where the classes are described by\
+normal distributions with means $[1, 1]^T$ (class +1) and $[2, 2]^T$ (class -1) and\
+identity covariance matrices.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{figures/exercise_02_07_01_fig_12.jpg}
+    \caption{Training Data X1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_01.jpg}
+        \caption{Training Errors}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_02.jpg}
+        \caption{Test Errors}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+\subsubsection{$s=3$}
+Consider a 2-class 2-dimensional classification task, where the classes are described by\
+normal distributions with means $[1, 1]^T$ (class +1) and $[3, 3]^T$ (class -1) and\
+identity covariance matrices.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{figures/exercise_02_07_01_fig_11.jpg}
+    \caption{Training Data X1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_03.jpg}
+        \caption{Training Errors}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_04.jpg}
+        \caption{Test Errors}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\subsubsection{$s=4$}
+Consider a 2-class 2-dimensional classification task, where the classes are described by\
+normal distributions with means $[1, 1]^T$ (class +1) and $[4, 4]^T$ (class -1) and\
+identity covariance matrices.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{figures/exercise_02_07_01_fig_10.jpg}
+    \caption{Training Data X1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_05.jpg}
+        \caption{Training Errors}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_06.jpg}
+        \caption{Test Errors}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\subsubsection{$s=6$}
+Consider a 2-class 2-dimensional classification task, where the classes are described by\
+normal distributions with means $[1, 1]^T$ (class +1) and $[6, 6]^T$ (class -1) and\
+identity covariance matrices.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{figures/exercise_02_07_01_fig_12.jpg}
+    \caption{Training Data X1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_07.jpg}
+        \caption{Training Errors}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_07_01_fig_08.jpg}
+        \caption{Test Errors}
+    \end{subfigure}\\
+\end{figure}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{homeworkProblem}
+\maketitle
+\subsection{Exercise 2.8.1}
+\matlabscript{mfiles/exercise_02_08_01}{Source codes}
+
+\newpage
+\subsubsection{$\sigma=4$ and Learning Rate = 0.01 with 9000 Iterations}
+
+Results for the FNNs Trained by the Standard BP Algorithm,\
+with Learning Rate 0.01 and 9000 Iterations.
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}|p{1.2cm}|p{1.2cm}| }
+\hline
+\multicolumn{3}{|c|}{Test and Training Errors with $\sigma=4$} \\
+\hline
+No.Hidden Layers & Training & Test \\
+\hline
+2 & 0.3143 & 0.3714\\
+4 & 0.0357 & 0.0571\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{figures/exercise_02_08_01_fig_01.jpg}
+    \caption{Training Data X1 with $\sigma=4$}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_05.jpg}
+        \caption{No.Hidden Layers = 2}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_06.jpg}
+        \caption{No.Hidden Layers = 2}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_02.jpg}
+        \caption{No.Hidden Layers = 4}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_04.jpg}
+        \caption{No.Hidden Layers = 4}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\subsubsection{$\sigma=4$ and Learning Rate = 0.0001 with 6000 Iterations}
+
+Results for the FNNs Trained by the Standard BP Algorithm,\
+with Learning Rate 0.0001 and 6000 Iterations.
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}|p{1.2cm}|p{1.2cm}| }
+\hline
+\multicolumn{3}{|c|}{Test and Training Errors with $\sigma=4$} \\
+\hline
+No.Hidden Layers & Training & Test \\
+\hline
+2 & 0.3357 & 0.3857\\
+4 & 0.2214 & 0.2143\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_10.jpg}
+        \caption{No.Hidden Layers = 2}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_11.jpg}
+        \caption{No.Hidden Layers = 2}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_08.jpg}
+        \caption{No.Hidden Layers = 4}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_01_fig_09.jpg}
+        \caption{No.Hidden Layers = 4}
+    \end{subfigure}\\
+\end{figure}
+
+\end{homeworkProblem}
+%-------------END PROBLEM 4--------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
 %----------------------------------------------------------------------------------------
 
 \newpage
@@ -886,5 +1129,5 @@ No.Hidden Layers & Training & Test \\
 
 \end{homeworkProblem}
 
-%----------------------------------------------------------------------------------------
+%-------------END_PROBLEM 5----------------------------------------------------
 \end{document}
