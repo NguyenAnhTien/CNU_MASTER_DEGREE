@@ -32,6 +32,7 @@ sub_plot_poly_train_test.legend((poly_miss_class),\
 #---------------end_plot_miss_classification-----------------------
 #--------------end_poly--------------------------------------------
 """
+"""
 #----------------radial_basis--------------------------------------
 
 radial_x = [0.1, 0.5, 1, 1.5, 2.5]
@@ -51,4 +52,53 @@ sub_plot_radial_train_test.legend((radial_train, radial_test),\
                                 ncol=3,
                                 fontsize=8)
 #--------------end_radial_basis--------------------------------------------
+"""
+"""
+#--------------2.8.2-------------------------------------------------------
+#with sigma=2--------------------------------------------------------------
+sigma_2_x = [7, 8, 10, 14, 16, 20, 32, 40]
+test_errors = [0.1111, 0.1611, 0.1333, 0.0500, 0.0444, 0.0611, 0.0389, 0.0611]
+train_errors = [0.1222, 0.1611, 0.0722, 0.0111, 0.0167, 0.0056, 0.0056, 0.0111]
+fig_sigma_2, sub_plot_sigma_2 = plt.subplots()
+sigma_2_test = sub_plot_sigma_2.scatter(sigma_2_x, test_errors)
+sigma_2_train = sub_plot_sigma_2.scatter(sigma_2_x, train_errors)
+sub_plot_sigma_2.plot(sigma_2_x, test_errors)
+sub_plot_sigma_2.plot(sigma_2_x, train_errors)
+sub_plot_sigma_2.legend((sigma_2_test, sigma_2_train),\
+                        ('Test Errors', 'Training Errors'),\
+                        scatterpoints=1, loc='lower left',
+                        ncol=3,
+                        fontsize=8)
+"""
+"""
+#with sigma=3--------------------------------------------------------------
+sigma_3_x = [7, 8, 10, 14, 16, 20, 32, 40]
+test_errors = [0.1222, 0.2222, 0.1778, 0.1333, 0.1222, 0.1389, 0.0778, 0.1222]
+train_errors = [0.1278, 0.1778, 0.1000, 0.0944, 0.0833, 0.0222, 0.0167, 0.0167]
+fig_sigma_3, sub_plot_sigma_3 = plt.subplots()
+sigma_3_test = sub_plot_sigma_3.scatter(sigma_3_x, test_errors)
+sigma_3_train = sub_plot_sigma_3.scatter(sigma_3_x, train_errors)
+sub_plot_sigma_3.plot(sigma_3_x, test_errors)
+sub_plot_sigma_3.plot(sigma_3_x, train_errors)
+sub_plot_sigma_3.legend((sigma_3_test, sigma_3_train),\
+                        ('Test Errors', 'Training Errors'),\
+                        scatterpoints=1, loc='lower left',
+                        ncol=3,
+                        fontsize=8)
+"""
+#with sigma=4--------------------------------------------------------------
+sigma_4_x = [7, 8, 10, 14, 16, 20, 32, 40]
+test_errors = [0.1611, 0.2000, 0.2111, 0.2389, 0.1833, 0.1444, 0.1389, 0.1500]
+train_errors = [0.1444, 0.1500, 0.1111, 0.1167, 0.1389, 0.0500, 0.0333, 0.0278]
+fig_sigma_4, sub_plot_sigma_4 = plt.subplots()
+sigma_4_test = sub_plot_sigma_4.scatter(sigma_4_x, test_errors)
+sigma_4_train = sub_plot_sigma_4.scatter(sigma_4_x, train_errors)
+sub_plot_sigma_4.plot(sigma_4_x, test_errors)
+sub_plot_sigma_4.plot(sigma_4_x, train_errors)
+sub_plot_sigma_4.legend((sigma_4_test, sigma_4_train),\
+                        ('Test Errors', 'Training Errors'),\
+                        scatterpoints=1, loc='lower left',
+                        ncol=3,
+                        fontsize=8)
+#--------------end_2.8.2---------------------------------------------------
 plt.show()

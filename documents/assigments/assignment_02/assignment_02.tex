@@ -172,7 +172,6 @@
 \newpage
 \newpage
 \begin{figure}[h]
-%\centering
         \centering
         \includegraphics[scale=0.4]{figures/exercise_02_04_01_fig_01.jpg}
         \caption{Training Data X1}
@@ -253,7 +252,7 @@ No. support vectors  & 82 & 61 & 44 & 37 & 33 & 25\\
 
 \end{homeworkProblem}
 
-%----------------------------------------------------------------------------------------
+%----------------PROBLEM 1---------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
@@ -266,7 +265,6 @@ No. support vectors  & 82 & 61 & 44 & 37 & 33 & 25\\
 \subsection{Exercise 2.6.1}
 \matlabscript{mfiles/exercise_02_06_01}{Source codes}
 
-%----------------------------------------------------------------------------------------
 \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{figures/exercise_02_06_01_fig_15.jpg}
@@ -395,6 +393,8 @@ Misclassifications & 32 & 34 & 33 & 29 & 32 \\
     \caption{Radial Basis with $\sigma=1.5$}
 \end{figure}
 
+\newpage
+
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=.4]{figures/exercise_02_06_01_fig_05.jpg}
@@ -402,7 +402,489 @@ Misclassifications & 32 & 34 & 33 & 29 & 32 \\
 \end{figure}
 
 \end{homeworkProblem}
+%-------------END PROBLEM 2--------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
 
+\newpage
+\begin{homeworkProblem}
+\maketitle
+\subsection{Exercise 2.8.2}
+\matlabscript{mfiles/exercise_02_08_02}{Source codes}
+
+\newpage
+\subsubsection{$\sigma=2$}
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}|p{1.2cm}|p{1.2cm}| }
+\hline
+\multicolumn{3}{|c|}{Test and Training Errors with $\sigma=2$} \\
+\hline
+No.Hidden Layers & Training & Test \\
+\hline
+7 & 0.1222 & 0.1111\\
+8 & 0.1611 & 0.1611\\
+10 & 0.0722 & 0.1333\\
+14 & 0.0111 & 0.0500\\
+16 & 0.0167 & 0.0444\\
+20 & 0.0056 & 0.0611\\
+32 & 0.0056 & 0.0389\\
+40 & 0.0111 & 0.0611\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.3]{figures/exercise_02_08_02_fig_26.jpg}
+        \caption{Training Data X1 with $\sigma=2$}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_48.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_49.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_45.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_46.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_42.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_43.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_39.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_40.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_36.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_37.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.5]{figures/exercise_02_08_02_fig_33.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.2]{figures/exercise_02_08_02_fig_34.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.5]{figures/exercise_02_08_02_fig_30.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.2]{figures/exercise_02_08_02_fig_31.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.5]{figures/exercise_02_08_02_fig_27.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.2]{figures/exercise_02_08_02_fig_28.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_76.jpg}
+    \caption{Training and Test Errors with $\sigma=2$}
+\end{figure}
+
+\newpage
+\subsubsection{$\sigma=3$}
+
+\begin{center}
+\begin{tabular}{ |p{4cm}|p{1.2cm}|p{1.2cm}| }
+\hline
+\multicolumn{3}{|c|}{Test and Training Errors with $\sigma=3$} \\
+\hline
+No.Hidden Layers & Training & Test \\
+\hline
+7 & 0.1278 & 0.1222\\
+8 & 0.1778 & 0.2222\\
+10 & 0.1000 & 0.1778\\
+14 & 0.00944 & 0.1333\\
+16 & 0.0833 & 0.1222\\
+20 & 0.0222 & 0.1389\\
+32 & 0.0167 & 0.0778\\
+40 & 0.0167 & 0.1222\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.3]{figures/exercise_02_08_02_fig_51.jpg}
+        \caption{Training Data X1 with $\sigma=3$}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_52.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_53.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_55.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_56.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_58.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_59.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_61.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_62.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_64.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_65.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_67.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_68.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_70.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_71.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_73.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_74.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=.4]{figures/exercise_02_08_02_fig_77.jpg}
+    \caption{Training and Test Error with $\sigma=3$}
+\end{figure}
+
+\newpage
+\subsubsection{$\sigma=4$}
+
+\begin{center}
+\begin{tabular}{ |p{3.5cm}|p{1.2cm}|p{1.2cm}| }
+\hline
+\multicolumn{3}{|c|}{Test and Training Errors with $\sigma=4$} \\
+\hline
+No.Hidden Layers & Training & Test \\
+\hline
+7 & 0.1444 & 0.1611\\
+8 & 0.1500 & 0.2000\\
+10 & 0.1111 & 0.2111\\
+14 & 0.1167 & 0.2389\\
+16 & 0.1389 & 0.1833\\
+20 & 0.0500 & 0.1444\\
+32 & 0.0333 & 0.1389\\
+40 & 0.0278 & 0.1500\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.3]{figures/exercise_02_08_02_fig_01.jpg}
+        \caption{Training Data X1 with $\sigma=4$}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_04.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+    \begin{subfigure}[ht]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_02.jpg}
+        \caption{No.Hidden Layers = 7}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_05.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_06.jpg}
+        \caption{No.Hidden Layers = 8}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_08.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_09.jpg}
+        \caption{No.Hidden Layers = 10}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_11.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_12.jpg}
+        \caption{No.Hidden Layers = 14}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_14.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_15.jpg}
+        \caption{No.Hidden Layers = 16}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_17.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_18.jpg}
+        \caption{No.Hidden Layers = 20}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_20.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_22.jpg}
+        \caption{No.Hidden Layers = 32}
+    \end{subfigure}\\
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_23.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+    \begin{subfigure}[h]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=.3]{figures/exercise_02_08_02_fig_24.jpg}
+        \caption{No.Hidden Layers = 40}
+    \end{subfigure}\\
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=.4]{figures/exercise_02_08_02_fig_78.jpg}
+    \caption{Training and Test Error with $\sigma=4$}
+\end{figure}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
 \end{document}
