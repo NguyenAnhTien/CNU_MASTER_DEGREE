@@ -1,0 +1,310 @@
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{physics}
+
+\graphicspath{ {../../../datasets/images/chapter_02/} }
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} 
+\lstloadlanguages{Matlab}
+\lstset{language=Matlab,
+        frame=single,
+        basicstyle=\small\ttfamily,
+        keywordstyle=[1]\color{Blue}\bf,
+        keywordstyle=[2]\color{Purple},
+        keywordstyle=[3]\color{Blue}\underbar,
+        identifierstyle=,
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple},
+        showstringspaces=false,
+        tabsize=5, 
+        morekeywords={rand},
+        morekeywords=[2]{on, off, interp},
+        morekeywords=[3]{test},
+        morecomment=[l][\color{Blue}]{...},
+        numbers=left,
+        firstnumber=1,
+        numberstyle=\tiny\color{Blue},
+        stepnumber=5
+}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\matlabscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkDueDate}{Wednesday,\ September\ 27,\ 2017}
+\newcommand{\hmwkClass}{3-D\ DIVISION} % Course/class
+\newcommand{\hmwkClassTime}{15:00pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{leecw} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Tien Anh Nguyen} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+\subsection{Gram-Schmidt Process}
+Given linearly independent vector \[x_1,x_2,...,x_k\], there exits mutually \
+perpendicular vectors \[u_1,u_2,...,u_k\] with the same linear span. These may \
+be constructed sequentially by setting
+  \begin{equation}
+   \begin{aligned}
+    u_1 &= x_1\\
+    u_2 &= x_2 - \frac{x'_2u_1}{u'_1u_1}{u_1}\\
+    \qquad.\;\\
+    \;\;.\;\\
+    \;\;.\;\\
+    u_k &= x_k - \frac{x'_ku_1}{u'_1u_1}u_1 - ... - \frac{(x'_ku_(k-1))}{u'_(k-1)u_(k-1)}u_(k-1)
+   \end{aligned}
+  \end{equation}
+Gram-Schmidt process is used to find perpendicular vectors
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\newpage
+\begin{homeworkProblem}
+\subsection{Gauss-Newton Algorithm}
+According to Wikipedia, the Gauss-Newton algorithm is used to solve non-linear least\
+squares problems.
+The goal is to model a set of N data points \[{(x_i, y_i), (i = 1, ..., N)}\] \
+by a non-linear function.
+\begin{equation}
+y = f(x, a_1, ..., a_M) = f(x, a)
+\end{equation}
+with a set of M model parameters \[a = [a_1,...,a_M]^T\], so that the sum of\
+ squared error is miniminzed:
+\begin{equation}
+\varepsilon(a) = \sum_{i=1}^{N}r_{i}^2 = \sum_{i=1}^{N}[y_i - f(x_i,a)]^2
+\end{equation}
+We defined:
+\begin{equation}
+\begin{aligned}
+f_i(a) &= f(x_i,a)\\
+r_i &= y_i - f(x_i, a) = y_i - f_i(a)
+\end{aligned}
+\end{equation}
+Therefore, we have:
+\begin{equation} \label{eq:5}
+\varepsilon(a) = \sum_{i=1}^{N}[y_i - f(x_i,a)]^2 = \sum_{i=1}^{N}[y_i - f_i(a)]^2 = \sum_{i=1}^{N}r_{i}^2 
+\end{equation}
+Applying vector forms, the equation (\ref{eq:5}) can be rewritten as:
+
+\begin{equation}
+\begin{aligned}
+r = [
+    \begin{matrix}
+        r_{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        r_{N}
+    \end{matrix}
+]
+  =
+[
+    \begin{matrix}
+        y_{1} - f_{1}(a)\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        y_{N} - f_{N}(a)\\
+    \end{matrix}
+]
+  =
+[
+    \begin{matrix}
+        y_{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        y_{N}\\
+    \end{matrix}
+]
+  -
+[
+    \begin{matrix}
+        f_{1}(a)\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        \hdotsfor{1}\\
+        f_{N}(a)\\
+    \end{matrix}
+]
+  =
+    y - f(a)
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+y = [y_1, ..., y_N]^T\\
+f(a) = [f_1(a), ...,f_N(a)]^T
+\end{aligned}
+\end{equation}
+Therefore,
+\begin{equation}\label{eq:8}
+\varepsilon(a) = \sum_{i=1}^{N}r_{i}^2 = ||r||^2 = ||y - f(a)||^2
+\end{equation}
+The epsilon value in the equation (\ref{eq:8}) is minimum if it satisfy the equation that \
+the gradient vector is equal to zero. Hence,
+
+\begin{equation}
+\dv{\varepsilon(a)}{a} = \dv{||y - f(a)||^2}{a} = -2J^T(y - f(a)) = 0
+\end{equation}
+
+Where J is the Jacobian matrix.
+
+However, It is really hard to find a exact solution for a, so we are going to \
+find a approximate one. We use the following iteration:
+\begin{equation}
+a_{n+1} = a_{n} + \Delta a
+\end{equation}
+According to the Taylor expansion of the function 
+\begin{equation}
+f_i(a_{n+1}) \quad at \quad a_n
+\end{equation}
+ we have:
+\begin{equation}
+f(a_{n+1}) \approx f(a_n) + J\Delta a
+\end{equation}
+
+The Gauss-Newton algorithm is quite complex. It require a lot of knowledge about\
+ Algebra, Jacobian matrix, Taylor expansion and Newton's method. I are going to \
+obtain those knowledge as soon as possible to upgrade this report.
+
+I am going to show the result of Gauss-Newton method is:
+\begin{equation}
+a_{n+1} = a_n + \Delta a = a_n + J^-(y - f(a_n))
+\end{equation}
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+\end{document}
