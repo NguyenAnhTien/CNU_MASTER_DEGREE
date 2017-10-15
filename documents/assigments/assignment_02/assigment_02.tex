@@ -65,6 +65,9 @@
 %
 \documentclass[conference]{IEEEtran}
 \usepackage{blindtext, graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
 % Add the compsoc option for Computer Society conferences.
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
@@ -454,14 +457,72 @@ relationship to the surrounding structures. Those imformation will effect on dec
 about treatment for patients. The rest of this paper are going to introduce the 
 importance of fully automatic brain tumor segmentation methods and three segmentation 
 algorithms.
+%\begin{figure}[!h]
+%    \begin{subfigure}[h]{0.5\textwidth}
+%        \centering
+%        \includegraphics[scale=0.3]{brain_tumor_structure.jpg}
+%        \caption{Human Brain Structure \cite{vision}}
+%    \end{subfigure}\\
+%    \begin{subfigure}[h]{0.5\textwidth}
+%        \centering
+%        \includegraphics[scale=0.2]{brain_tumors.png}
+%        \caption{Brain Tumor \cite{PE-BrainTumors}}
+%    \end{subfigure}\\
+%\end{figure}
+\begin{figure}[!h]
+\begin{multicols}{2}
+    \includegraphics[scale=0.4]{brain_tumor_structure.jpg}\par 
+    \includegraphics[scale=0.3]{brain_tumors.png}\par 
+    \end{multicols}
+\caption{a)human brain structure \cite{PE-BrainTumors}, b)brain tumor \cite{vision}}
+\end{figure}
 
 \section{Brain Tumor Segmentation Algorithms}
-The brain tumor segmentation methods play in the evaluation of patient with brain tumors. 
-However, they are error-prone and time consuming task for the experts. Hence, a lot of brain 
-tumor segmentation algorithms are introduced to address this problem. This paper focus on 
-three algorithms which are Fuzzy C-Means (FCM), Markov Random Fields (MRF) and Support Vector 
-Machine (SVM).
+The brain tumor segmentation methods play in the evaluation of patient with 
+brain tumors. However, they are error-prone and time consuming task for the 
+experts. Hence, a lot of brain tumor segmentation algorithms are introduced to 
+address this problem. This paper focus on three algorithms which are Fuzzy 
+C-Means, Markov Random Fields and Support Vector Machine. the brain tumor 
+segmentation problem is a cluster or classification process. The brains are 
+classified into brain tumors and non-brain tumors regions.
 
+\subsection{\textbf{Fuzzy C-Means Algorithms}}
+The Fuzzy C-Means algorithm (FCM) \cite{Fuzzy C-Means} classifies one group of 
+data into two or more cluster. Based on the distance between the cluster and each 
+data point, the algorithm assigns membership to the data point. Unlike k-means 
+algorithm, each data point may be belong to more than one cluster. W.E.Phillips 
+proposed a method \cite{Fuzzy C-Means 2} which segments brain tumor into three 
+classes including active cells, necrotic core, and edema based on MR images.
+However, FCM is a time consuming clustering method. L.Szilagyi \cite{Szilagyi} 
+proposed a new method which incorporates local information to reduce iteration 
+loops of original FCM. Therefore, it reduces the executed time of the original 
+algorithms.
+
+\subsection{\textbf{Markov Random Fields}}
+T. N. Tran \cite{TNTran} provided a method which applied Markov Random Fields 
+(MRF). MRF can integrate spatial information into the classification process. 
+It also provides solutions for overlapping and noise problems. J. Lafferty 
+\cite{Lafferty} proposed a method which incorporates MRF and Conditional Random 
+Fields (CRF) to build a probabilistic models to segment and classify data.
+D. T. Gering \cite{DTGering} introduced a multi-layer MRF framework to detect mass 
+of cells of brain tumors. The spatial locations, structural coherence, and 
+region intensities are as inputs for main layers.
+
+\subsection{\textbf{Support Vector Machine}}
+J. Zhou \cite{JZhou} provided a segmentation method by exploring one-class 
+Support Vector Machine (SVM). Using the SVM parameters training procedure and 
+learning kernel, this algorithm achieved better result compared to the fuzzy 
+clustering method. N. Zhang \cite{NZhang} introduced a multi-kernal based SVM 
+which integrated with a feature selection and a fusion process. Firstly, the 
+method using a multi-kernel SVM to classify the brain tumor. After that, the 
+algorithm ameliorate the contour of the tumor region by both distance and the 
+maximum likelihood.
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.6]{svn_process.png}
+\caption{Brain Tumor}
+\label{fig_sim}
+\end{figure}
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
 
@@ -478,15 +539,6 @@ Machine (SVM).
 % option should be used if it is desired that the figures are to be
 % displayed while in draft mode.
 %
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results}
-%\label{fig_sim}
-%\end{figure}
 
 % Note that IEEE typically puts floats only at the top, even when this
 % results in a large percentage of a column being occupied by floats.
@@ -549,8 +601,13 @@ Machine (SVM).
 
 
 
-\section{Conclusion}
-\blindtext
+\section{\textbf{Conclusion}}
+The purpose of all brain tumor segmentation algorithms are to fully automatically 
+segment brain tumors. They are play the most important role to extract the 
+information which are impacted on treatment options for patients. The brain 
+tumor segmentation algorithms have shown amazing potential results for 
+analyzing tumors in clinical practice. However, there is a long distance 
+between researching and clinical applications.
 
 
 
@@ -571,15 +628,15 @@ Machine (SVM).
 %
 
 
-\appendices
-\section{Proof of the First Zonklar Equation}
-\blindtext
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%\blindtext
 
 % use section* for acknowledgement
-\section*{Acknowledgment}
+%\section*{Acknowledgment}
 
 
-The authors would like to thank...
+%The authors would like to thank...
 
 
 % Can use something like this to put references on a page
@@ -617,6 +674,43 @@ The authors would like to thank...
 \bibitem{PE-BrainTumors}
 Brain Tumors: an Introduction,
 \\\texttt{https://www.mayfieldclinic.com/PDF/PE-TumorIntro.pdf}
+\bibitem{Fuzzy C-Means}
+J. C. Bezdek, Pattern Recognition with Fuzzy Objective Function 
+Algorithms. Kluwer Academic Publishers, 1981.
+\bibitem{Fuzzy C-Means 2}
+W. Phillips II, R. Velthuizen, S. Phuphanich, L. Hall, L. Clarke, 
+and M. Silbiger, APPLICATION OF FUZZY C-MEANS SEGMENTATION TECHNIQUE
+FOR TISSUE DIFFERENTIATION IN MR IMAGES OF A
+HEMORRHAGIC GLIOBLASTOMA MULTIFORME, 
+Magnetic Resonance Imaging, Vol. 13, No. 2, pp. 277-290, 1995.
+\bibitem{Szilagyi}
+L. Szilagyi, Z.Benyo, S. M. Szilagyi, and H. Adam, MR brain image segmentation 
+using a enhanced fuzzy c-means algorithm, in Enginerring in Medicine and Biology 
+Society, 2003. Proceedings of the 25th Annual International Conference of the 
+IEEE, IEEE, 2003, vol. 1, pp. 724-726.
+\bibitem{TNTran}
+T. N. Tran, R. Wehrens, and L. Buydens, Clustering multispectral images: A 
+tutorial, chemometrics and Intelligent Laboratory Systems, vol. 77, no. 1, 
+pp. 3-17, 2005.
+\bibitem{Lafferty}
+J. Lafferty, A. McCallum, and F. C. Pereira, Conditional random fields: 
+Probabilistic models for segmenting and labeling sequence data, in Proceedings 
+of the 18th International Conference on Machine Learning 2001 (ICML 2001), 2001.
+\bibitem{DTGering}
+D. T. Gering, W. E. L. Grimson, and R. Kikinis, Recognizing Deviations from 
+Normalcy for Brain Tumor Segmentation. Springer, 2002.
+\bibitem{JZhou}
+J. Zhou, K. Chan, V. Chong, and S. Krishnan, Extraction of brain tumor from MR 
+images using one-class support vector machine, in Engineering in Medicine and 
+Biology Society, 2005. IEEE-EMBS 2005. 27th Annual International Conference of 
+the, IEEE, 2006, pp. 6411-6414.
+\bibitem{NZhang}
+N. Zhang, S. Ruan, S. Lebonvallet, Q. Liao, and Y. Zhu, Multi-kernel SVM based 
+classification for brain tumor segmentation of MRI multi-sequence, in Image 
+Processing (ICIP), 2009 16th IEEE International Conference on, IEEE, 2009, 
+pp. 3373-3376.
+\bibitem{vision}
+http://vision.cse.psu.edu
 \end{thebibliography}
 
 % biography section
@@ -630,7 +724,7 @@ Brain Tumors: an Introduction,
 %\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{picture}}]{John Doe}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{brain_tumors.png}}]{John Doe}
 \blindtext
 \end{IEEEbiography}
 
