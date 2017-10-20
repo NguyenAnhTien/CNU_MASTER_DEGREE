@@ -110,6 +110,10 @@
   \newblock Machine Learning CS229
   \newblock Stanford University
   \newblock December 1, 2007
+ \bibitem {UDACITY} Aaron Bobick \& Irfan Essa \& Arpan Chakraborty 
+  \newblock Introduction to Computer Vision
+  \newblock UDACITY
+  \newblock \emph{https://www.udacity.com/course/ud810}
 \end{thebibliography}
 \end{frame}
 
@@ -194,16 +198,52 @@
 %-------------------------------------------------------
 \section{Markov Chain}
 %-------------------------------------------------------
+\subsection{Ingredients of a Markov Chain}
+\begin{frame}{Markov Chain}{Ingredients}
+  \begin{itemize}
+    \item States: ${S_1, S_2, ..., S_N}$ 
+    \item States transition probabilities: 
+                          $a_{ij} = P(z_{t+1} = S_i | z_t = S_j)$ 
+    \item Initial state distribution: $\pi_{i} = P(z_1 = S_i)$ 
+  \end{itemize}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Markov Chain}{Example 1}
+%-------------------------------------------------------
+  \begin{block}{Example 1}
+     We have 3 states from a weather system $S = {Sunny, Rainy, Snowy}$
+  \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Markov Assumption}
+\begin{frame}{Markov Chain}{Markov Assumption}
+%-------------------------------------------------------
+  \begin{block}{LIMITED HORIZON ASSUPTION}
+        The probability of being in a state at time $t+1$ depends only on the\
+        state at time $t$. It means that the state at time $t$ represents\
+        "enough" summary of the past to reasonably predict the feature. Formally:
+  \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
 \subsection{Definition}
-\begin{frame}{Markov Chain}{Definition}
+\begin{frame}{Markov Chain}{DEFINITION}
 %-------------------------------------------------------
   \begin{block}{Definition(Markov Chain)}
      A Markov chain is a sequence of random variables \ 
      $X_1,\ X_2,\ X_3,\ ...,\ X_t,\ ...$, such that the probability\
-     distribution of $X_{t+1}$ depends only on t and $X_t$. \cite{Brian}
+     distribution of $X_{t+1}$ depends only on t and $x_t$. \cite{Brian}
   \end{block}
+  In other words:
+       $P(X_{t+1} = x | X_t = x_t, \textcolor{red}{X_{t-1} = x_{t-1}, ..., X_1 = x_1}) = P(X_{t+1} = x|X_t = x_t)$
 \end{frame}
 
+%-------------------------------------------------------
 {\1
 \begin{frame}[plain,noframenumbering]
   \finalpage{Thanks for your attention}
