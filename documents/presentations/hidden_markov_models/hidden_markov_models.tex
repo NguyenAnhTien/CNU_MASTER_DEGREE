@@ -88,9 +88,8 @@
 %-------------------------------------------------------
 \section{References}
 %-------------------------------------------------------
-\begin{frame}{References}
+\begin{frame}[allowframebreaks]{References}
 %-------------------------------------------------------
-
 \begin{thebibliography}{9}
  \bibitem {Richard} Richard A. Davis
   \newblock Introduction to Statistical Analysis of Time Series.
@@ -105,8 +104,13 @@
   \newblock Pattern Recognition In BioInformatics Q3/2012
   \newblock Aarhus University
   \newblock Department of Computer Science
+ \bibitem {Anders} Anders Meng
+  \newblock An introduction to Markov and Hidden Markov Models
+ \bibitem {Daniel} Daniel Ramage
+  \newblock Machine Learning CS229
+  \newblock Stanford University
+  \newblock December 1, 2007
 \end{thebibliography}
-
 \end{frame}
 
 %-------------------------------------------------------
@@ -160,9 +164,32 @@
     \includegraphics[width=1in,height=1in]{figures/sunny_to_rainny.png}
   \end{figure}
 \end{frame}
-
 %-------------------------------------------------------------------------
 
+\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models}
+%-------------------------------------------------------
+  \begin{itemize}
+    \item How can we predict weather of next day based on weather of today?
+  \end{itemize}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=1in,height=1in]{figures/sunny_to_rainny.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models}
+%-------------------------------------------------------
+  \begin{itemize}
+    \item Assume that you have been locked into a room for serveral days, \
+          and you have no windows, so can we predict the weather outside \
+          based on the clothes of the caretaker?
+  \end{itemize}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3in,height=2in]{figures/prisoner.jpg}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
 
 {\1
 \begin{frame}[plain,noframenumbering]
