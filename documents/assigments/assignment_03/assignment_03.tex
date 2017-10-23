@@ -163,9 +163,13 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-\subsection{Gaussian Noise}
+\subsection{imnoise2 M-Function}
 \matlabscript{mfiles/imnoise2}{\textbf{imnoise2 Source Code}}
-\matlabscript{mfiles/example}{\textbf{Example of imnoise2 which demonstrate \textbf{"Gaussian"} case.}}
+
+\newpage
+
+\subsection{Gaussian Noise}
+\matlabscript{mfiles/example}{\textbf{Example of imnoise2 which demonstrate \textbf{"Gaussian"} noise.}}
 
 \newpage
 
@@ -185,16 +189,19 @@
 
 \newpage
 
+\subsection{Salt and Pepper Noise}
+\matlabscript{mfiles/example_salt_pepper}{\textbf{Example of imnoise2 which demonstrate \textbf{"Salt and Pepper"} noise.}}
+
 \begin{figure}[h]
 \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[scale=0.5]{figures/assignment_03_fig_05.jpg}
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_07.jpg}
         \caption{Histogram of Original Image}
     \end{subfigure}\\
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[scale=0.5]{figures/assignment_03_fig_04.jpg}
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_06.jpg}
         \caption{Histogram of Noised Image}
     \end{subfigure}%
 \end{figure}
