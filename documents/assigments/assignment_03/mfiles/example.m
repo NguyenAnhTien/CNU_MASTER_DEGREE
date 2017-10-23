@@ -2,7 +2,7 @@
 % Just provide the path of the image to add the noise or to restore the
 % image.
 clc;
-f = imread('../figures/assignment_03_fig_01.tif');
+f = imread('../figures/assignment_03_fig_06.tif');
 figure
 imshow(f),title('Original Image')
 [M N] = size(f);
@@ -20,7 +20,7 @@ gp = f + r;
 figure
 imshow(gp),title('Image after adding the Noise');
 figure
-histogram(gp, 50);
+histogram(gp);
 % histogram(gp);
 % The image distorted by adding the noise can be restored by using the
 % function imrest. Here an example is shown by using contraharmonic filter.

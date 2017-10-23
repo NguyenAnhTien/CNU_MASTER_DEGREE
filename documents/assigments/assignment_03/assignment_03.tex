@@ -118,7 +118,7 @@
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkTitle}{Assignment\ \#2}
 \newcommand{\hmwkDueDate}{Monday,\ September\ 11,\ 2017}
 \newcommand{\hmwkClass}{IMAGE\ PROCESSING} % Course/class
 \newcommand{\hmwkClassTime}{14:00pm} % Class/lecture time
@@ -163,16 +163,42 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-The Matlab provides \textbf{imnoise} function to add noises to a image.
-The basic syntax:
-  \begin{lstlisting}
-     g = imnoise(f, type, parameters)
-  \end{lstlisting}
-  \begin{itemize}
-     \item \textbf{f} is the input image.
-     \item \textbf{type} takes values such that \textbf{"gaussian"}, \textbf{"localvar"}, \textbf{"salt & peppr"}, \textbf{speckle} and \textbf{poisson}.
-     \item \textbf{parameters} will be depended on values of \textbf{"type"}.
-  \end{itemize}
+\subsection{Gaussian Noise}
+\matlabscript{mfiles/imnoise2}{\textbf{imnoise2 Source Code}}
+\matlabscript{mfiles/example}{\textbf{Example of imnoise2 which demonstrate \textbf{"Gaussian"} case.}}
+
+\newpage
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_01.jpg}
+        \caption{Original Image}
+    \end{subfigure}\\
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_03.jpg}
+        \caption{Image is added noises}
+    \end{subfigure}%
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_05.jpg}
+        \caption{Histogram of Original Image}
+    \end{subfigure}\\
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{figures/assignment_03_fig_04.jpg}
+        \caption{Histogram of Noised Image}
+    \end{subfigure}%
+\end{figure}
+
 \end{homeworkProblem}
 %----------------------------------------------------------------------------------------
 
