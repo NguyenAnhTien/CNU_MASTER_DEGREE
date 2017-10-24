@@ -205,10 +205,10 @@
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\section{Markov Chain}
+\section{Markov Model}
 %-------------------------------------------------------
-\subsection{Ingredients of a Markov Chain}
-\begin{frame}{Markov Chain}{Ingredients}
+\subsection{Ingredients of a Markov Model}
+\begin{frame}{Markov Model}{Ingredients}
   \begin{itemize}
     \item States?
     \item States transition probabilities?
@@ -218,7 +218,7 @@
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\begin{frame}{Markov Chain}{Weather Example}
+\begin{frame}{Markov Model}{Weather Example}
 %-------------------------------------------------------
   \begin{block}{Weather Example}
      We have 3 states from a weather system $S = \{Sunny, Rainy, Snowy\}$. We \
@@ -235,7 +235,7 @@
 
 %-------------------------------------------------------
 \subsection{Markov Assumption}
-\begin{frame}{Markov Chain}{Markov Assumption}
+\begin{frame}{Markov Model}{Markov Assumption}
 %-------------------------------------------------------
   \begin{block}{FIRST ORDER MARKOV ASSUMPTION}
         The probability of being in a state at time $t+1$ depends only on the\
@@ -257,10 +257,10 @@
 
 %-------------------------------------------------------
 \subsection{Definition}
-\begin{frame}{Markov Chain}{DEFINITION}
+\begin{frame}{Markov Model}{DEFINITION}
 %-------------------------------------------------------
-  \begin{block}{Definition(Markov Chain)}
-     A Markov chain is a sequence of random variables \ 
+  \begin{block}{Definition(Markov Model)}
+     A Markov model is a sequence of random variables \ 
      $x_1,\ x_2,\ x_3,\ ...,\ x_N$, such that the probability\
      distribution of $x_{n+1}$ depends only on the outcome at $x_t$.
   \end{block}
@@ -269,7 +269,7 @@
 
 %-------------------------------------------------------
 \subsection{Likelihood Calculation}
-\begin{frame}{Markov Chain}{Likelihood Calculation}
+\begin{frame}{Markov Model}{Likelihood Calculation}
 %-------------------------------------------------------
   \begin{block}{Likelihood Calculation}
   We assump that there are a given sequence of data $D=\{x_1, x_2, ..., x_N\}$ \
@@ -283,7 +283,7 @@
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\begin{frame}{Markov Chain}{Likelihood Calculation}
+\begin{frame}{Markov Model}{Likelihood Calculation}
   \begin{itemize}
     \item The conditional probabilities $p(x_n = S_j | x_{n-1} = S_i)$ are \
           referred to as \textbf{state transition probabilities} or simple \
@@ -301,7 +301,7 @@
 
 %-------------------------------------------------------
 \subsection{Transition Matrix}
-\begin{frame}{Markov Chain}{Transition Matrix}
+\begin{frame}{Markov Model}{Transition Matrix}
 %-------------------------------------------------------
   \begin{block}{Transition Matrix}
   The transition probabilites can be written as a transition matrix, which is \
@@ -329,7 +329,7 @@
 
 %-------------------------------------------------------
 \subsection{Illustration of the Markov Model}
-\begin{frame}{Markov Chain}{Illustration}
+\begin{frame}{Markov Model}{Illustration}
 %-------------------------------------------------------
   \begin{figure}[h]
     \centering
@@ -340,7 +340,7 @@
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\begin{frame}{Markov Chain}{Graphical Models}
+\begin{frame}{Markov Model}{Graphical Models}
 %-------------------------------------------------------
   \begin{itemize}
       \item There is no time information in the illustration.
@@ -350,7 +350,7 @@
 
 %-------------------------------------------------------
 \subsection{Illustration of the Markov Model}
-\begin{frame}{Markov Chain}{Graphical Model}
+\begin{frame}{Markov Model}{Graphical Model}
 %-------------------------------------------------------
   \begin{figure}[h]
     \centering
@@ -362,7 +362,7 @@
 
 %-------------------------------------------------------
 \subsection{Initial State Probability}
-\begin{frame}{Markov Chain}{Graphical Model}
+\begin{frame}{Markov Model}{Graphical Model}
 %-------------------------------------------------------
   \begin{block}{Transition Matrix}
    To fully characterize the Markov Model, we need to address the 
