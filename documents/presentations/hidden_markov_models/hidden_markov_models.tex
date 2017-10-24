@@ -218,9 +218,9 @@
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\begin{frame}{Markov Chain}{Example 1}
+\begin{frame}{Markov Chain}{Weather Example}
 %-------------------------------------------------------
-  \begin{block}{Example 1}
+  \begin{block}{Weather Example}
      We have 3 states from a weather system $S = \{Sunny, Rainy, Snowy\}$. We \
      observe the weather a few days \
      $\{x_1 = S_{Sun}, x_2 = S_{Rainy}, x_3 = S_{Snowy}\}$
@@ -334,7 +334,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=4.5in,height=2.3in]{figures/illustration_markov_model.png}
-    \caption {Illustration of the Markov Model}
+    \caption {\textbf{Illustration of the Markov Model}}
   \end{figure}
 \end{frame}
 %-------------------------------------------------------
@@ -355,7 +355,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=4.6in,height=2.3in]{figures/graphical_models.png}
-    \caption {Graphical model of Markov Model}
+    \caption {\textbf{Graphical model of Markov Model}}
   \end{figure}
 \end{frame}
 %-------------------------------------------------------
@@ -365,21 +365,57 @@
 \begin{frame}{Markov Chain}{Graphical Model}
 %-------------------------------------------------------
   \begin{block}{Transition Matrix}
-   To fully characterize the Markov Model, we need to address the initial \
-   state probability which is given as $\pi_i(1) = p(x_1 = S_i)$. This \
-   probability defines the probability of being in one of the M states at \
-   first example. This is also written as a vector:\\
+   To fully characterize the Markov Model, we need to address the 
+   \textbf{initial state probability} which is given as \
+   $\pi_i(1) = p(x_1 = S_i)$. This probability defines the probability of \
+   being in one of the M states at first example. This is also written as a \
+   vector:\\
         \begin{equation}
             \pi(1) = [p(x_1 = S_1) p(x_1 = S_2) .. p(x_1 = S_M]^T
         \end{equation}
   \end{block}
 \end{frame}
 %-------------------------------------------------------
+
 %-------------------------------------------------------
-\subsection{Weather Example}
-\begin{frame}{Markov Chain}{Weather example}
+\subsection{Weather Example cont.}
+\begin{frame}[allowframebreaks]{Markov Model}{Weather example cont.}
 %-------------------------------------------------------
-    
+That is enough for theory. Let go back to \textbf{Weather Example}. 
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4.6in,height=2.3in]{figures/weather_example.png}
+    \caption {\textbf{Weather?A Markov Model?}}
+  \end{figure}
+  \textbf{Ingredients of a Markov Model}
+  \begin{itemize}
+      \item States: $\{S_{Sunny},\ S_{rainy},\ S_{snowy}\}$
+      \item State transition probabilities:
+            \begin{center}
+              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+                \hline
+                 \multicolumn{4}{|c|}{Weather Markov Model} \\
+                \hline
+                        & Sunny & Rainy & Snowy \\
+                \hline
+                     Sunny & 0.8  & 0.15 & 0.05\\
+                     Rainy & 0.38 & 0.6  & 0.02\\
+                     Snowy & 0.75 & 0.05 & 0.2\\
+                \hline
+              \end{tabular}
+              \end{center}
+      \item On assumption, initial state distribution: $\pi = (0.7\ \ 0.25\ \ 0.05)$
+  \end{itemize}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5in,height=1.5in]{figures/weather_example_2.png}
+    \caption {\textbf{What is the probability of this series?}}
+  \end{figure}
+   \begin{block}{Solution}
+       \fontsize{7}{10}{$P(S_{sunny}).P(S_{rainy}|S_{sunny}).P(S_{rainy}|S_{rainy}).P(S_{rainy}|S_{rainy})$}\
+       $.P(S_{snowy}|S_{rainy}).P(S_{snowy}|S_{snowy})$\\
+       $=0.7\cdot0.15\cdot0.6\cdot0.6\cdot0.02\cdot0.2=0.0001512$
+   \end{block}
 \end{frame}
 %-------------------------------------------------------
 
