@@ -94,10 +94,10 @@
  \bibitem {Richard} Richard A. Davis
   \newblock Introduction to Statistical Analysis of Time Series.
  \bibitem {Brian} Prof. Brian Charles Williams \& Prof. Emillio Frazzoli
-  \newblock Principles of Autonomy and Decision Making course.
+  \newblock Principles of Autonomy and Decision Making course. \textcolor{red}{(**)}
   \newblock \emph{MIT OpenCourseWare} 16.410/413, Lecture 20
  \bibitem {Dimitri} Dimitri P. Bertsekas \& John N. Tsitsiklis
-  \newblock Introduction to Probability, 2002
+  \newblock Introduction to Probability, 2002 \textcolor{red}{(*)}
   \newblock Massachusetts Institute of Technology
   \newblock Department of Electrical Engineering and Computer Science
  \bibitem {Thomas} Thomas Mailund
@@ -105,17 +105,17 @@
   \newblock Aarhus University
   \newblock Department of Computer Science
  \bibitem {Anders} Anders Meng
-  \newblock An introduction to Markov and Hidden Markov Models
+  \newblock An introduction to Markov and Hidden Markov Models \textcolor{red}{(***)}
  \bibitem {Daniel} Daniel Ramage
   \newblock Machine Learning CS229
   \newblock Stanford University
   \newblock December 1, 2007
  \bibitem {UDACITY} Aaron Bobick \& Irfan Essa \& Arpan Chakraborty 
-  \newblock Introduction to Computer Vision
+  \newblock Introduction to Computer Vision \textcolor{red}{(**)}
   \newblock UDACITY
   \newblock \emph{https://www.udacity.com/course/ud810}
  \bibitem {Michael} Michael I. Jordan 
-  \newblock Practical Machine Learning 
+  \newblock Practical Machine Learning \textcolor{red}{(*)}
   \newblock University of California, Berkeley
   \newblock \emph{https://people.eecs.berkeley.edu/~jordan/courses/294-fall09/}
 \end{thebibliography}
@@ -192,10 +192,11 @@
 
 \begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
 %-------------------------------------------------------
+ \label{kidnapping_example}
   \begin{itemize}
     \item Assume that you have been locked into a room for serveral days, \
           and you have no windows, so can we predict the weather outside \
-          based on the clothes of the caretaker?
+          based on the clothes of the caretaker?\cite{Anders}
   \end{itemize}
   \begin{figure}[h]
     \centering
@@ -415,6 +416,37 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
        \fontsize{7}{10}{$P(S_{sunny}).P(S_{rainy}|S_{sunny}).P(S_{rainy}|S_{rainy}).P(S_{rainy}|S_{rainy})$}\
        $.P(S_{snowy}|S_{rainy}).P(S_{snowy}|S_{snowy})$\\
        $=0.7\cdot0.15\cdot0.6\cdot0.6\cdot0.02\cdot0.2=0.0001512$
+   \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\section{Hidden Markov Model}
+%-------------------------------------------------------
+\subsection{Kidnapping Example}
+\begin{frame}{Hidden Markov Model}{Kidnapping Example}
+    Let go back to \hyperlink{kidnapping_example}{\beamerbutton{\textbf{Kidnapping Example}}}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Kidnapping vs Weather Example}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping vs Weather Example}
+%-------------------------------------------------------
+   \begin{block}{Kidnapping Example vs Weather Example}
+     What does \textbf{Kidnapping} example different from \textbf{Weather} example?
+   \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping vs Weather Example cont.}
+%-------------------------------------------------------
+   \begin{block}{Kidnapping Example vs Weather Example cont.}
+     In the \textbf{Kidnapping} example, we cannot directly observe the\
+     \textbf{M} states {$\{S_{Sunny},\ S_{rainy},\ S_{snowy}\}$}. They are\
+     now \textbf{hidden variables}.
    \end{block}
 \end{frame}
 %-------------------------------------------------------
