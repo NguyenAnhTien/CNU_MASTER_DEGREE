@@ -114,6 +114,10 @@
   \newblock Introduction to Computer Vision
   \newblock UDACITY
   \newblock \emph{https://www.udacity.com/course/ud810}
+ \bibitem {Michael} Michael I. Jordan 
+  \newblock Practical Machine Learning 
+  \newblock University of California, Berkeley
+  \newblock \emph{https://people.eecs.berkeley.edu/~jordan/courses/294-fall09/}
 \end{thebibliography}
 \end{frame}
 
@@ -295,6 +299,89 @@
 \end{frame}
 %-------------------------------------------------------
 
+%-------------------------------------------------------
+\subsection{Transition Matrix}
+\begin{frame}{Markov Chain}{Transition Matrix}
+%-------------------------------------------------------
+  \begin{block}{Transition Matrix}
+  The transition probabilites can be written as a transition matrix, which is \
+  of dimension $M\ x\ M$. Since each element in the matrix represent a\
+  probability of staying or jumping to another state. \cite{Anders}
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                a_{11} & a_{12} & a_{13}\\
+                a_{21} & a_{22} & a_{23}\\
+                a_{31} & a_{32} & a_{33}\\
+            \end{bmatrix}
+        \end{equation}
+  \end{block}
+  \begin{itemize}
+      \item Each entry must be positive, so $a_{i,j} \geqslant 0$ for all i,j.
+      \item Each row must sum up to one, since each row represents the\
+            probability of jumping from or staying in the state. Formally: \\
+            \begin{equation}
+               \sum_{j=1}^{M}a_{i,j} = 1\ for\ i\ =\ 1\ ...\ M
+            \end{equation} 
+  \end{itemize}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Illustration of the Markov Model}
+\begin{frame}{Markov Chain}{Illustration}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4.5in,height=2.3in]{figures/illustration_markov_model.png}
+    \caption {Illustration of the Markov Model}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Markov Chain}{Graphical Models}
+%-------------------------------------------------------
+  \begin{itemize}
+      \item There is no time information in the illustration.
+  \end{itemize}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Illustration of the Markov Model}
+\begin{frame}{Markov Chain}{Graphical Model}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4.6in,height=2.3in]{figures/graphical_models.png}
+    \caption {Graphical model of Markov Model}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Initial State Probability}
+\begin{frame}{Markov Chain}{Graphical Model}
+%-------------------------------------------------------
+  \begin{block}{Transition Matrix}
+   To fully characterize the Markov Model, we need to address the initial \
+   state probability which is given as $\pi_i(1) = p(x_1 = S_i)$. This \
+   probability defines the probability of being in one of the M states at \
+   first example. This is also written as a vector:\\
+        \begin{equation}
+            \pi(1) = [p(x_1 = S_1) p(x_1 = S_2) .. p(x_1 = S_M]^T
+        \end{equation}
+  \end{block}
+\end{frame}
+%-------------------------------------------------------
+%-------------------------------------------------------
+\subsection{Weather Example}
+\begin{frame}{Markov Chain}{Weather example}
+%-------------------------------------------------------
+    
+\end{frame}
+%-------------------------------------------------------
 
 {\1
 \begin{frame}[plain,noframenumbering]
