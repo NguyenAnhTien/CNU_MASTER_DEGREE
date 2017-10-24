@@ -277,7 +277,7 @@
   where each of the variables $x_n$ take one of M states $\{S_1, S_2, ..., S_M\}$.
   The likelihood of the sample \textbf{D} can now be calculated as:\\
         \begin{equation}
-            p(D|M) = p(x_1 = S_i)\displaystyle \prod_{n=2}^{N}p(x_n = S_j | x_{n-1} = S_i)
+            P(D|M) = P(x_1 = S_i)\displaystyle \prod_{n=2}^{N}p(x_n = S_j | x_{n-1} = S_i)
         \end{equation}
   \end{block}
 \end{frame}
@@ -286,14 +286,14 @@
 %-------------------------------------------------------
 \begin{frame}{Markov Model}{Likelihood Calculation}
   \begin{itemize}
-    \item The conditional probabilities $p(x_n = S_j | x_{n-1} = S_i)$ are \
+    \item The conditional probabilities $P(x_n = S_j | x_{n-1} = S_i)$ are \
           referred to as \textbf{state transition probabilities} or simple \
           \textbf{transition probabilities}. \cite{Anders}
     \item In most cases we assume that the \textit{transition probabilities} \
           are homogeneous, which means that the probabilities do not change \
           over time(STATIONARY PROCESS ASSUMPTION). \cite{Anders} Formally:
           \begin{equation}
-               p(x_n = S_j|x_{n-1} = S_i) = p(x_{n+T} = S_j|x_{n-1+T} = S_i)
+               P(x_n = S_j|x_{n-1} = S_i) = P(x_{n+T} = S_j|x_{n-1+T} = S_i)
           \end{equation}
           Where T is a positive integer larger or equal to one.
   \end{itemize}
@@ -355,7 +355,7 @@
 %-------------------------------------------------------
   \begin{figure}[h]
     \centering
-    \includegraphics[width=4.6in,height=2.3in]{figures/graphical_models.png}
+    \includegraphics[width=2.5in,height=1in]{figures/graphical_models.png}
     \caption {\textbf{Graphical model of Markov Model}}
   \end{figure}
 \end{frame}
@@ -368,11 +368,11 @@
   \begin{block}{Transition Matrix}
    To fully characterize the Markov Model, we need to address the 
    \textbf{initial state probability} which is given as \
-   $\pi_i(1) = p(x_1 = S_i)$. This probability defines the probability of \
+   $\pi_i(1) = P(x_1 = S_i)$. This probability defines the probability of \
    being in one of the M states at first example. This is also written as a \
    vector:\\
         \begin{equation}
-            \pi(1) = [p(x_1 = S_1) p(x_1 = S_2) .. p(x_1 = S_M]^T
+            \pi(1) = [P(x_1 = S_1) P(x_1 = S_2) .. P(x_1 = S_M]^T
         \end{equation}
   \end{block}
 \end{frame}
@@ -446,8 +446,100 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
    \begin{block}{Kidnapping Example vs Weather Example cont.}
      In the \textbf{Kidnapping} example, we cannot directly observe the\
      \textbf{M} states {$\{S_{Sunny},\ S_{rainy},\ S_{snowy}\}$}. They are\
-     now \textbf{hidden variables}.
+     now \textbf{hidden state variables}.
    \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Hidden State Variables}
+%-------------------------------------------------------
+\begin{frame}[allowframebreaks]{Hidden Markov Model}{Hidden State Variables}
+   \begin{block}{Hidden Variables}
+       The hidden state variables are observed through another variable $Y$,\
+       which gives an indication of the hidden state. \cite{Anders} 
+       The observed variable $Y$ can be discrete or continuous random varibale.
+   \end{block}
+   \begin{block}{The relationship between $Y$ and $M$}
+        Assume that the observable's are discrete taking on one of L values \
+        $\{C_1, C_2,...,C_L\}$. Hence, we have the relationship between the\
+       \textbf{ observed variables $Y$} and \textbf{hidden state variables}. \
+       Formally:\\
+             \begin{equation}
+             \label{rela_M_Y}
+                  P(y_n = C_i|x_n = S_j) = b_{i,j}
+             \end{equation}
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Emission Probability}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Emission Probability}
+   \begin{block}{Emission Probability}
+        The equation \ref{rela_M_Y} means that given we are in state $S_j$ of \
+        hidden variable at some time instant n, what is the probability of\ 
+        observing the symbol $C_j$
+   \end{block}
+   \begin{block}{Emission Probability}
+        The output of the expression [\ref{rela_M_Y}] is called\
+        \textbf{emission probability}
+   \end{block}
+   \begin{block}{Emission Probability Matrix}
+        The output of the expression [\ref{rela_M_Y}] can be fully described by \
+        a $LxM$ emission (observation) matrix \textbf{B}.
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Graphical Model of a Hidden Markov Model}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Graphical Model of a Hidden Markov Model}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5in,height=2in]{figures/graphical_model_hidden_markov_model.png}
+    \caption {\textbf{Graphical model of a Hidden Markov Model}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{The likelihood of the Hidden Markov Model}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{The likelihood of the Hidden Markov Model}
+   \begin{block}{The likelihood of the Hidden Markov Model}
+        To calculate the likelihood of the set of observations \
+        $Y=\{y_1,\ y_2,\ ...,\ y_N\}$ using the following formula:
+             \begin{equation}
+             \label{hidd_likelihood}
+                  P(D) = \sum_{n=1}^{N}P(x_1)p(y_1|x_1)\prod_{n=2}^{N}P(x_n|x_{n-1})P(y_n|x_n)
+             \end{equation}
+   \end{block}
+   \begin{block}{The likelihood and transition matrix}
+        The expression \ref{hidd_likelihood} can be rewrite using the notation \
+        of transition matrix, observation matrix and initial state probability.
+             \begin{equation}
+             \label{hidd_likelihood}
+                  P(D) = \sum_{n=1}^{N}\pi_{x_1}(1)b_{x_1}(y_1)\prod_{n=2}^{N}a_{x_{n-1},x_n}b_{x_n}(y_n)
+             \end{equation}
+        where $b_{x_n} = S_j(y_n = C_i) = b_{j,i}$ is the emission probability.
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Kidnapping Example cont.}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+    Let go back again to \textbf{Kidnapping} example to discover how to apply\ 
+    Hidden Markov Model.
+%-------------------------------------------------------
 \end{frame}
 %-------------------------------------------------------
 
