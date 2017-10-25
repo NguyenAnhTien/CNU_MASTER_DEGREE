@@ -365,14 +365,14 @@
 \subsection{Initial State Probability}
 \begin{frame}{Markov Model}{Graphical Model}
 %-------------------------------------------------------
-  \begin{block}{Transition Matrix}
+  \begin{block}{Intial State Probability}
    To fully characterize the Markov Model, we need to address the 
    \textbf{initial state probability} which is given as \
    $\pi_i(1) = P(x_1 = S_i)$. This probability defines the probability of \
    being in one of the M states at first example. This is also written as a \
    vector:\\
         \begin{equation}
-            \pi(1) = [P(x_1 = S_1) P(x_1 = S_2) .. P(x_1 = S_M]^T
+            \pi(1) = [P(x_1 = S_1)\ P(x_1 = S_2)\ ...\ P(x_1 = S_M]^T
         \end{equation}
   \end{block}
 \end{frame}
@@ -521,11 +521,11 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
              \end{equation}
    \end{block}
    \begin{block}{The likelihood and transition matrix}
-        The expression \ref{hidd_likelihood} can be rewrite using the notation \
+        The expression [\ref{hidd_likelihood}] can be rewrite using the notation \
         of transition matrix, observation matrix and initial state probability.
              \begin{equation}
              \label{hidd_likelihood}
-                  P(D) = \sum_{n=1}^{N}\pi_{x_1}(1)b_{x_1}(y_1)\prod_{n=2}^{N}a_{x_{n-1},x_n}b_{x_n}(y_n)
+                  P(D) = \sum_{x_1,x_2,...,x_n}^{}\pi_{x_1}(1)b_{x_1}(y_1)\prod_{n=2}^{N}a_{x_{n-1},x_n}b_{x_n}(y_n)
              \end{equation}
         where $b_{x_n} = S_j(y_n = C_i) = b_{j,i}$ is the emission probability.
    \end{block}
@@ -537,9 +537,97 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 \subsection{Kidnapping Example cont.}
 %-------------------------------------------------------
 \begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
     Let go back again to \textbf{Kidnapping} example to discover how to apply\ 
     Hidden Markov Model.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5in,height=2in]{figures/kidnapping_example_model.png}
+    \caption {\textbf{Kidnapping Example}}
+  \end{figure}
+\end{frame}
 %-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3in,height=1in]{figures/kidnapping_example_02.png}
+    \caption {\textbf{What is the probability of this series?}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
+  \textbf{Ingredients of "Kidnapping" Hidden Markov Model}
+  \fontsize{7.5}{10.5}
+ {
+  \begin{itemize}
+     \item States: ${S_{sunny}, S_{rainy}, S_{snowy}}$
+     \item State transition probabilities: 
+            \begin{center}
+              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+                \hline
+                 \multicolumn{4}{|c|}{Weather Markov Model} \\
+                \hline
+                        & Sunny & Rainy & Snowy \\
+                \hline
+                     Sunny & 0.8  & 0.15 & 0.05\\
+                     Rainy & 0.38 & 0.6  & 0.02\\
+                     Snowy & 0.75 & 0.05 & 0.2\\
+                \hline
+              \end{tabular}
+              \end{center}
+      \item Distinct states: $\textbf{L} = \{C_1 = Short\ Skirt, C_2 = Umbrella, C_3 = Coat\}$
+      \item Observation sequences: $Y = \{C_3, C_3, C_2, C_2, C_1, C_2, C_2\}$
+      \item Emission probability matrix:
+            \begin{center}
+              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+                \hline
+                 \multicolumn{4}{|c|}{Emission probability matrix} \\
+                \hline
+                        & Skirts & Umbrella & Coat \\
+                \hline
+                     Sunny & 0.6  & 0.1 & 0.3\\
+                     Rainy & 0.05 & 0.65  & 0.3\\
+                     Snowy & 0    & 0.5 & 0.5\\
+                \hline
+              \end{tabular}
+              \end{center}
+       \item Initial state distribution: $\pi = (0.7\ \ 0.25\ \ 0.05)$ 
+  \end{itemize}
+ }
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
+    \textbf{\textcolor{red}{Are we missing something??????}}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
+    To handle the example, we need to suppose that you was locked into the\
+    room is sunny and the caretaker wears short skirt. Hence:
+            $\pi_{x_1}(1) = p(x_1 = S_sunny) = 0.7$\\
+            $b_{x_1}(y_1) =  0.6$
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%-------------------------------------------------------
+   \begin{block}{Kidnapping Example Solution}
+      \begin{equation}
+         P(D) = 0.7 \cdot 0.6 
+      \end{equation}
+   \end{block}
 \end{frame}
 %-------------------------------------------------------
 
