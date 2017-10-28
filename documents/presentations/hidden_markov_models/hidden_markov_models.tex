@@ -118,6 +118,9 @@
   \newblock Practical Machine Learning \textcolor{red}{(*)}
   \newblock University of California, Berkeley
   \newblock \emph{https://people.eecs.berkeley.edu/~jordan/courses/294-fall09/}
+ \bibitem {James} Daniel Jurafsky \& James H. Martin 
+  \newblock Speech and Language Processing, 2017 \textcolor{red}{(*)}
+  \newblock Stanford University
 \end{thebibliography}
 \end{frame}
 
@@ -128,7 +131,7 @@
 \begin{frame}{Big Picture}{Time Series}
 %-------------------------------------------------------
   \begin{block}{Time Series}
-          Time Series: A collection of observations $x_t$ each one being \
+          Time Series: A collection of observations $q_t$ each one being \
           recorded at time t. (Time could be discrete, t = 1, 2, 3, ..., or \
           continuous t > 0). \cite{Richard}
   \end{block}
@@ -179,17 +182,7 @@
 \end{frame}
 %-------------------------------------------------------------------------
 
-\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
-%-------------------------------------------------------
-  \begin{itemize}
-    \item How can we predict weather of next day based on weather of today?
-  \end{itemize}
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=1in,height=1in]{figures/sunny_to_rainny.png}
-  \end{figure}
-\end{frame}
-
+%-------------------------------------------------------------------------
 \begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
 %-------------------------------------------------------
  \label{kidnapping_example}
@@ -224,7 +217,7 @@
   \begin{block}{Weather Example}
      We have 3 states from a weather system $S = \{Sunny, Rainy, Snowy\}$. We \
      observe the weather a few days \
-     $\{x_1 = S_{Sun}, x_2 = S_{Rainy}, x_3 = S_{Snowy}\}$
+     $\{q_1 = S_{Sun}, q_2 = S_{Rainy}, q_3 = S_{Snowy}\}$
   \end{block}
   \begin{figure}[h]
     \centering
@@ -241,15 +234,18 @@
   \begin{block}{FIRST ORDER MARKOV ASSUMPTION}
         The probability of being in a state at time $t+1$ depends only on the\
         state at time $t$. It means that the state at time $t$ represents\
-        "enough" summary of the past to reasonably predict the feature.\cite{Daniel}\\
-        Formally:
-             $P(x_t|x_{t-1},...,x_1) = P(x_t|x_{t-1})$
+        "enough" summary of the past to reasonably predict the feature\cite{Daniel}. 
+        Formally:\\
+        \begin{equation}
+            P(q_t|q_{t-1},...,q_1) = P(q_t|q_{t-1})
+        \end{equation}
   \end{block}
   \begin{block}{STATIONARY PROCESS ASSUMPTION}
        The conditional distribution over next state given current state does \
-       not change over time. \cite{Daniel}\\ 
-       Formally:
-       $P(x_t|x_{t-1}) = P(x_2|x_1);t \in 2..T$
+       not change over time\cite{Daniel}. Formally:\\
+        \begin{equation}
+             P(q_t|q_{t-1}) = P(q_2|q_1);t \in 2..T
+        \end{equation}
   \end{block}
   \textit{What is the meaning of the \textbf{Stationary Process Assumption}?}\\
   We are going to get back this assumption later!!!!!!!!
@@ -261,9 +257,9 @@
 \begin{frame}{Markov Model}{DEFINITION}
 %-------------------------------------------------------
   \begin{block}{Definition(Markov Model)}
-     A Markov model is a sequence of random variables \ 
-     $x_1,\ x_2,\ x_3,\ ...,\ x_N$, such that the probability\
-     distribution of $x_{n+1}$ depends only on the outcome at $x_t$.
+     A Markov model (Markov Chain) is a sequence of random variables \ 
+     $q_1,\ q_2,\ q_3,\ ...,\ q_N$, such that the probability\
+     distribution of $q_{t+1}$ depends only on the outcome at $q_t$.
   \end{block}
 \end{frame}
 %-------------------------------------------------------
@@ -273,11 +269,11 @@
 \begin{frame}{Markov Model}{Likelihood Calculation}
 %-------------------------------------------------------
   \begin{block}{Likelihood Calculation}
-  We assump that there are a given sequence of data $D=\{x_1, x_2, ..., x_N\}$ \
-  where each of the variables $x_n$ take one of M states $\{S_1, S_2, ..., S_M\}$.
+  We assump that there are a given sequence of data $Q=\{q_1, q_2, ..., q_N\}$ \
+  where each of the variables $x_n$ take one of \textbf{S} states $\{S_1, S_2, ..., S_{|S|}\}$.
   The likelihood of the sample \textbf{D} can now be calculated as:\\
         \begin{equation}
-            P(D|M) = P(x_1 = S_i)\displaystyle \prod_{n=2}^{N}p(x_n = S_j | x_{n-1} = S_i)
+            P(Q|M) = P(q_1 = S_i)\displaystyle \prod_{n=2}^{N}p(q_n = S_j | q_{n-1} = S_i)
         \end{equation}
   \end{block}
 \end{frame}
@@ -368,11 +364,13 @@
   \begin{block}{Intial State Probability}
    To fully characterize the Markov Model, we need to address the 
    \textbf{initial state probability} which is given as \
-   $\pi_i(1) = P(x_1 = S_i)$. This probability defines the probability of \
-   being in one of the M states at first example. This is also written as a \
-   vector:\\
+   $\pi_i$. $\pi_i$ is the probability that the Markov chain will start in\
+   state i.\\
         \begin{equation}
-            \pi(1) = [P(x_1 = S_1)\ P(x_1 = S_2)\ ...\ P(x_1 = S_M]^T
+            \pi = \pi_1, \pi_2,...,\pi_N
+        \end{equation}
+        \begin{equation}
+           \sum_{i=1}^{N}\pi_i = 1 
         \end{equation}
   \end{block}
 \end{frame}
@@ -445,7 +443,7 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
    \begin{block}{Kidnapping Example vs Weather Example cont.}
      In the \textbf{Kidnapping} example, we cannot directly observe the\
-     \textbf{M} states {$\{S_{Sunny},\ S_{rainy},\ S_{snowy}\}$}. They are\
+     \textbf{S} states {$\{S_{Sunny},\ S_{rainy},\ S_{snowy}\}$}. They are\
      now \textbf{hidden state variables}.
    \end{block}
 \end{frame}
@@ -456,18 +454,18 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
 \begin{frame}[allowframebreaks]{Hidden Markov Model}{Hidden State Variables}
    \begin{block}{Hidden Variables}
-       The hidden state variables are observed through another variable $Y$,\
+       The hidden state variables are observed through another variable $O$,\
        which gives an indication of the hidden state. \cite{Anders} 
-       The observed variable $Y$ can be discrete or continuous random varibale.
+       The observed variable $O$ can be discrete or continuous random varibale.
    \end{block}
-   \begin{block}{The relationship between $Y$ and $M$}
+   \begin{block}{The relationship between $O$ and $Q$}
         Assume that the observable's are discrete taking on one of L values \
-        $\{C_1, C_2,...,C_L\}$. Hence, we have the relationship between the\
-       \textbf{ observed variables $Y$} and \textbf{hidden state variables}. \
+        $\{C_1, C_2,...,C_{|L|}\}$. Hence, we have the relationship between the\
+       \textbf{ observed variables $Q$} and \textbf{hidden state variables $O$}. \
        Formally:\\
              \begin{equation}
              \label{rela_M_Y}
-                  P(y_n = C_i|x_n = S_j) = b_{i,j}
+                  P(o_n = C_i|q_n = S_j) = b_{i,j}
              \end{equation}
    \end{block}
 %-------------------------------------------------------
@@ -479,7 +477,7 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
 \begin{frame}{Hidden Markov Model}{Emission Probability}
    \begin{block}{Emission Probability}
-        The equation \ref{rela_M_Y} means that given we are in state $S_j$ of \
+        The equation [\ref{rela_M_Y}] means that given we are in state $S_j$ of \
         hidden variable at some time instant n, what is the probability of\ 
         observing the symbol $C_j$
    \end{block}
@@ -509,26 +507,251 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\subsection{The likelihood of the Hidden Markov Model}
+\subsection{Three Fundamental Problems of Hidden Markov Model}
 %-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{The likelihood of the Hidden Markov Model}
-   \begin{block}{The likelihood of the Hidden Markov Model}
-        To calculate the likelihood of the set of observations \
-        $Y=\{y_1,\ y_2,\ ...,\ y_N\}$ using the following formula:
+\begin{frame}{Hidden Markov Model}{Three Fundamental Problems of Hidden Markov Model}
+   \begin{block}{Likelihood}
+       Given a HMM $\lambda=(A,B)$ and an observation sequence $O$, determine\
+       the likelihood $P(O|\lambda)$.
+   \end{block}
+   \begin{block}{Decoding}
+       Given a HMM $\lambda=(A,B)$ and an observation sequence $O$, discover\
+       the best hidden state sequence $Q$.
+   \end{block}
+   \begin{block}{Learning}
+       Given an observation sequence $O$ and the set of states in the HMM, \
+       learn the HMM parameters A and B.
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+   \begin{block}{Likelihood}
+       Given a HMM $\lambda=(A,B)$ and an observation sequence $O$, determine\
+       the likelihood $P(O|\lambda)$.
+   \end{block}
+   To calculate the probability of a serie of the hidden events is not so \
+   so simple in Hidden Markov models. Therefore, let's start with a slightly \
+   simple situation \textbf{Eating Ice Cream}.
+
+%   \begin{block}{Likelihood Computation: The Forward ALgorithm}
+%        To calculate the likelihood of the set of observations \
+%        $Y=\{y_1,\ y_2,\ ...,\ y_N\}$ using the following formula:
+%             \begin{equation}
+%             \label{hidd_likelihood}
+%                  P(D) = \sum_{n=1}^{N}P(x_1)p(y_1|x_1)\prod_{n=2}^{N}P(x_n|x_{n-1})P(y_n|x_n)
+%             \end{equation}
+%   \end{block}
+%   \begin{block}{The likelihood and transition matrix}
+%        The expression [\ref{hidd_likelihood}] can be rewrite using the notation \
+%        of transition matrix, observation matrix and initial state probability.
+%             \begin{equation}
+%             \label{hidd_likelihood}
+%                  P(D) = \sum_{x_1,x_2,...,x_n}^{}\pi_{x_1}(1)b_{x_1}(y_1)\prod_{n=2}^{N}a_{x_{n-1},x_n}b_{x_n}(y_n)
+%             \end{equation}
+%        where $b_{x_n} = S_j(y_n = C_i) = b_{j,i}$ is the emission probability.
+%   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Eating Ice Creams Example}
+%-------------------------------------------------------
+   Imagine that you are a climatologist in the year 2799 studying the history\
+   of global warming. You cannot find any records of the weather in Baltimore,\
+   Maryland, for the summer of 2007, but you do find Jason Eisner’s diary,\
+   which lists how many ice creams Jason ate every day that summer. Our goal\
+   is to use these observations to estimate the temperature every day. We’ll\
+   simplify this weather task by assuming there are only two kinds of days:\
+   cold (C) and hot (H).
+
+   \begin{block}{Eating Ice Creams Example}
+       Given a sequence of observations O, each observation is an integer\
+       corresponding to the number of ice creams eaten on a given day, figure\
+       out the correct ‘hidden’ sequence Q of weather states (H or C) which\ 
+       caused Jason to eat the ice cream.
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+   \begin{block}{The likelihood of the observation sequence}
+        Each hidden state produces only a single observation. Thus, the\
+        sequence of hidden states and the sequence of observations have\
+        the \textbf{same length T}. Given a particular hidden state sequence\
+        $Q=\{q_0, q_1, q_2, ..., q_T\}$ and an observation sequence\
+        $O=\{o_1, o_2, ..., o_T\}$, the likelihood of the observation sequence\
+        is:
              \begin{equation}
-             \label{hidd_likelihood}
-                  P(D) = \sum_{n=1}^{N}P(x_1)p(y_1|x_1)\prod_{n=2}^{N}P(x_n|x_{n-1})P(y_n|x_n)
+             \label{likelihood_compute_1}
+                  P(O|Q) = \prod_{i=1}^{T}P(o_i|q_i)
              \end{equation}
    \end{block}
-   \begin{block}{The likelihood and transition matrix}
-        The expression [\ref{hidd_likelihood}] can be rewrite using the notation \
-        of transition matrix, observation matrix and initial state probability.
-             \begin{equation}
-             \label{hidd_likelihood}
-                  P(D) = \sum_{x_1,x_2,...,x_n}^{}\pi_{x_1}(1)b_{x_1}(y_1)\prod_{n=2}^{N}a_{x_{n-1},x_n}b_{x_n}(y_n)
-             \end{equation}
-        where $b_{x_n} = S_j(y_n = C_i) = b_{j,i}$ is the emission probability.
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+   \begin{block}{Eating Ice Creams Example}
+         Let make the example more simpler. Suppose that we already knew the \
+         weather and want to predict how much ice cream Jason would eat. Let \
+         compute the probability of ice-cream observation \textit{3 1 3} from\
+         one possible hidden state sequence \textit{hot hot code}\\
+         $P(3\ 1\ 3|hot\ hot\ cold) = P(3|hot) \cdot P(1|hot| \cdot P(3|cold)$
    \end{block}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=1in]{figures/ice_creams_example_01.png}
+    \caption {\textbf{The computation of the observation likelihood}}
+  \end{figure}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+      \textcolor{red}{If we don't actually know what the hidden state\
+                 (weather) sequence was?}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+   \begin{block}{Likelihood Computation}
+       We can compute the total probability of the observation just by\
+       summing over all possible hidden state sequences:
+          \begin{equation}
+            P(O) = \sum_{Q}^{}P(O, Q) = \sum_{Q}^{}P(O|Q)P(Q)
+          \end{equation}
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+   \begin{block}{Eating Ice Creams Example}
+         $P(3\ 1\ 3) = P(3\ 1\ 3, cold\ cold\ cold) + P(3\ 1\ 3, cold\ cold\ hot) + ...$
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+   \begin{block}{Likelihood Computation}
+        For an HMM with N hidden states and an observation sequence of T \
+        observations, there are $N^{T}$ possible hidden sequences. For a \
+        real tasks, where N and T are both large, $N^{T}$ is a very large \
+        number, so we cannot compute the total observation likelihood by \
+        computing a separate observation likelihood for each hidden state \
+        sequence and then summing them. \textbf{The Forward algorithm is a\
+        solution for that problem}.
+   \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/the_forward_trellis.png}
+    \caption {\textbf{The forward trellis}}
+  \end{figure}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+    \begin{itemize}
+      \item \textcolor{red}{What is the Forward algorithm?}
+    \end{itemize}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward Algorithm}
+%-------------------------------------------------------
+    \begin{block}{The Forward Algorithm}
+        The forward algorithm computes the observation probability by summing\
+        over the probabilities of all possible hidden state paths that could\  
+        generate the observation sequence, but it does so efficiently by\
+        implicitly folding each of these paths into a single forward trellis.
+    \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward Algorithm}
+%-------------------------------------------------------
+    \begin{block}{Cells of the Forward algorithm trellis}
+         Each cell of the forward algorithm trellis $\alpha_t(j)$ represents\
+         the probability of being in state $j$ after seeing the first $t$\
+         observations, given the automaton $\lambda$.
+    \end{block}
+    \begin{block}{Cells of the Forward algorithm trellis}
+         The value of each cell $\alpha_t(j)$ is computed by summing over the\
+         probabilities of every path that could lead us to this cell.
+    \end{block}
+    \begin{block}{Cells of the Forward algorithm trellis}
+        \begin{equation}
+            \alpha_t{j} = P(o_1, o_2, ..., o_t, q_t = j|\lamdba) = \sum_{i=1}^{N}\alpha_t{i}a_{ij}b_j(o_t)
+        \end{equation}
+    \end{block}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward Algorithm}
+%-------------------------------------------------------
+    \begin{block}{Cells of the Forward algorithm trellis}
+        \begin{equation}
+            \alpha_t{j} = P(o_1, o_2, ..., o_t, q_t = j|\lamdba) = \sum_{i=1}^{N}\alpha_t(i)a_{ij}b_j(o_t)
+        \end{equation}
+    \end{block}
+    \begin{itemize}
+        \item $\alpha_t(i)$: the \textbf{previous forward path probabillity}\
+                             from the previous time step
+        \item $a_{ij}$: the transition probability from previous tate $q_i$\
+                        to current state $q_j$
+        \item $b_j(o_t)$: the state observation likelihood of the observation\
+                          sysmbol $O_t$ given the current state $j$ (emission\
+                          probability).
+    \end{itemize}
+%-------------------------------------------------------
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Likelihood Computation: The Forward ALgorithm}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/the_forward_trellis.png}
+    \caption {\textbf{The forward trellis}}
+  \end{figure}
 %-------------------------------------------------------
 \end{frame}
 %-------------------------------------------------------
