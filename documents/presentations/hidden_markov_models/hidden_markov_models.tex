@@ -138,7 +138,7 @@
 \end{frame}
 
 %-------------------------------------------------------
-\subsection{Whey do we need Markov and Hidden Markov Models?}
+\subsection{Why do we need Markov and Hidden Markov Models?}
 %-------------------------------------------------------
 \begin{frame}{Big Picture}{iid}
 %-------------------------------------------------------
@@ -153,7 +153,7 @@
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
+\begin{frame}{Big Picture}{Why do we need Markov and Hidden Markov Models?}
 %-------------------------------------------------------
   \begin{itemize}
     \item What are going to happend if observation are dependent?
@@ -161,16 +161,17 @@
   \end{itemize}
   \begin{figure}[h]
     \centering
-    \includegraphics[width=2in,height=2in]{figures/not_idd.png}
+    \includegraphics[width=2in,height=1.5in]{figures/not_idd.png}
   \end{figure}
   \begin{itemize}
-    \item What will happend if there is a time correlation between the\
-          different samples?\cite{Anders}
+    \item What will happend if there is a 
+          \textcolor{red}{\textbf{time correlation}} between the different\
+          samples?\cite{Anders}
   \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
+\begin{frame}{Big Picture}{Why do we need Markov Model?}
 %-------------------------------------------------------
   \begin{itemize}
     \item How can we predict weather of next day based on weather of today?
@@ -183,7 +184,7 @@
 %-------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------
-\begin{frame}{Big Picture}{Whey do we need Markov and Hidden Markov Models?}
+\begin{frame}{Big Picture}{Why do we need Hidden Markov Models?}
 %-------------------------------------------------------
  \label{kidnapping_example}
   \begin{itemize}
@@ -194,6 +195,24 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=3in,height=2in]{figures/prisoner.jpg}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{frame}{Big Picture}{Why do we need Hidden Markov Models?}
+%-------------------------------------------------------
+ \label{kidnapping_example}
+  \begin{itemize}
+    \item On assumption, you are a doctor. There is a patient come to meet you\
+          in three days. On the first day, the patient say \textbf{normal}, \
+          \text{cold} on the second day and \textbf{dizzy} for the last day. \
+          Can we predict the actual state of healthy of the patient on the \
+          third day?
+  \end{itemize}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=3in,height=2in]{figures/doctor-and-patient.jpg}
   \end{figure}
 \end{frame}
 %-------------------------------------------------------
@@ -270,7 +289,7 @@
 %-------------------------------------------------------
   \begin{block}{Likelihood Calculation}
   We assump that there are a given sequence of data $Q=\{q_1, q_2, ..., q_N\}$ \
-  where each of the variables $x_n$ take one of \textbf{S} states $\{S_1, S_2, ..., S_{|S|}\}$.
+  where each of the variables $q_n$ take one of \textbf{S} states $\{S_1, S_2, ..., S_{|S|}\}$.
   The likelihood of the sample \textbf{D} can now be calculated as:\\
         \begin{equation}
             P(Q|M) = P(q_1 = S_i)\displaystyle \prod_{n=2}^{N}p(q_n = S_j | q_{n-1} = S_i)
@@ -314,11 +333,11 @@
         \end{equation}
   \end{block}
   \begin{itemize}
-      \item Each entry must be positive, so $a_{i,j} \geqslant 0$ for all i,j.
+      \item Each entry must be positive, so $a_{ij} \geqslant 0$ for all i,j.
       \item Each row must sum up to one, since each row represents the\
             probability of jumping from or staying in the state. Formally: \\
             \begin{equation}
-               \sum_{j=1}^{M}a_{i,j} = 1\ for\ i\ =\ 1\ ...\ M
+               \sum_{j=1}^{M}a_{ij} = 1\ for\ i\ =\ 1\ ...\ M
             \end{equation} 
   \end{itemize}
 \end{frame}
@@ -455,7 +474,7 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 \begin{frame}[allowframebreaks]{Hidden Markov Model}{Hidden State Variables}
    \begin{block}{Hidden Variables}
        The hidden state variables are observed through another variable $O$,\
-       which gives an indication of the hidden state. \cite{Anders} 
+       which gives an indication of the hidden state\cite{Anders}.
        The observed variable $O$ can be discrete or continuous random varibale.
    \end{block}
    \begin{block}{The relationship between $O$ and $Q$}
@@ -714,11 +733,6 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
          The value of each cell $\alpha_t(j)$ is computed by summing over the\
          probabilities of every path that could lead us to this cell.
     \end{block}
-    \begin{block}{Cells of the Forward algorithm trellis}
-        \begin{equation}
-            \alpha_t{j} = P(o_1, o_2, ..., o_t, q_t = j|\lamdba) = \sum_{i=1}^{N}\alpha_t{i}a_{ij}b_j(o_t)
-        \end{equation}
-    \end{block}
 %-------------------------------------------------------
 \end{frame}
 %-------------------------------------------------------
@@ -728,13 +742,13 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
     \begin{block}{Cells of the Forward algorithm trellis}
         \begin{equation}
-            \alpha_t{j} = P(o_1, o_2, ..., o_t, q_t = j|\lamdba) = \sum_{i=1}^{N}\alpha_t(i)a_{ij}b_j(o_t)
+            \alpha_t(j) = P(o_1, o_2, ..., o_t, q_t = j|\lambda) = \sum_{i=1}^{N}\alpha_{t-1}(i)a_{ij}b_j(o_t)
         \end{equation}
     \end{block}
     \begin{itemize}
-        \item $\alpha_t(i)$: the \textbf{previous forward path probabillity}\
+        \item $\alpha_{t-1}(i)$: the \textbf{previous forward path probabillity}\
                              from the previous time step
-        \item $a_{ij}$: the transition probability from previous tate $q_i$\
+        \item $a_{ij}$: the transition probability from previous state $q_i$\
                         to current state $q_j$
         \item $b_j(o_t)$: the state observation likelihood of the observation\
                           sysmbol $O_t$ given the current state $j$ (emission\
@@ -757,105 +771,172 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\subsection{Kidnapping Example cont.}
+\subsection{Likelihood Computation: The Forward ALgorithm}
 %-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+\begin{frame}{Hidden Markov Model}{Decoding: The Viterbi Algorithm}
 %-------------------------------------------------------
-    Let go back again to \textbf{Kidnapping} example to discover how to apply\ 
-    Hidden Markov Model.
+    \begin{block}{Cells of the Forward algorithm trellis}
+        Given as input an HMM $\lambda=(A,B)$ and a sequence of observations \
+        $O={0_1,o_2,...,o_T}$ find the most probable sequence of states \
+        $Q={q_1q_2q_3...q_T}$.
+    \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Decoding: The Viterbi Algorithm}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Decoding: The Viterbi Algorithm}
+%-------------------------------------------------------
+    For each possible hidden stat sequence, we could run the forward algorithm\
+    and compute the likelihood of the observation sequence given that hidden \
+    state sequence. Then we could choose the hidden state sequence with the \
+    maximum observation likelihood.
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Decoding: The Viterbi Algorithm}
+%-------------------------------------------------------
+    \begin{block}{Viterbi algorithm}
+         \begin{equation}
+            v_t(j) = max_{i=1}^{N}v_{t-1}a_{ij}b_j(o_t)
+         \end{equation}
+         \begin{itemize}
+           \item $v_{t-1}(i)$ the previous Viterbi path probability from the \
+                          previous time step.
+           \item $a_{ij}$ the transition probability from previous state $q_i$ \
+                          to current state $q_j$
+           \item $b_j(o_t)$ the state observation likelihood of the\
+                            observation symbol $o_t$ given the current state $j$
+         \end{itemize}
+    \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Decoding: The Viterbi Algorithm}
+%-------------------------------------------------------
   \begin{figure}[h]
     \centering
-    \includegraphics[width=3.5in,height=2in]{figures/kidnapping_example_model.png}
-    \caption {\textbf{Kidnapping Example}}
+    \includegraphics[width=4in,height=2.3in]{figures/doctor_example_01.png}
+    \caption {\textbf{The Doctor and Patient example}}
   \end{figure}
 \end{frame}
 %-------------------------------------------------------
 
 %-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+\begin{frame}{Hidden Markov Model}{Decoding: The Viterbi Algorithm}
 %-------------------------------------------------------
   \begin{figure}[h]
     \centering
-    \includegraphics[width=3in,height=1in]{figures/kidnapping_example_02.png}
-    \caption {\textbf{What is the probability of this series?}}
+    \includegraphics[width=4in,height=2.3in]{figures/doctor_example_02.png}
+    \caption {\textbf{The Doctor and Patient example}}
   \end{figure}
 \end{frame}
 %-------------------------------------------------------
 
-%-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
-%-------------------------------------------------------
-  \textbf{Ingredients of "Kidnapping" Hidden Markov Model}
-  \fontsize{7.5}{10.5}
- {
-  \begin{itemize}
-     \item States: ${S_{sunny}, S_{rainy}, S_{snowy}}$
-     \item State transition probabilities: 
-            \begin{center}
-              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
-                \hline
-                 \multicolumn{4}{|c|}{Weather Markov Model} \\
-                \hline
-                        & Sunny & Rainy & Snowy \\
-                \hline
-                     Sunny & 0.8  & 0.15 & 0.05\\
-                     Rainy & 0.38 & 0.6  & 0.02\\
-                     Snowy & 0.75 & 0.05 & 0.2\\
-                \hline
-              \end{tabular}
-              \end{center}
-      \item Distinct states: $\textbf{L} = \{C_1 = Short\ Skirt, C_2 = Umbrella, C_3 = Coat\}$
-      \item Observation sequences: $Y = \{y_1 = C_3, y_2 = C_3, y_3 = C_2, y_4 = C_2, y_5 = C_1, y_6 = C_2, y_7 = C_2\}$
-      \item Emission probability matrix:
-            \begin{center}
-              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
-                \hline
-                 \multicolumn{4}{|c|}{Emission probability matrix} \\
-                \hline
-                        & Skirts & Umbrella & Coat \\
-                \hline
-                     Sunny & 0.6  & 0.1 & 0.3\\
-                     Rainy & 0.05 & 0.65  & 0.3\\
-                     Snowy & 0    & 0.5 & 0.5\\
-                \hline
-              \end{tabular}
-              \end{center}
-       \item Initial state distribution: $\pi = (0.7\ \ 0.25\ \ 0.05)$ 
-  \end{itemize}
- }
-\end{frame}
-%-------------------------------------------------------
-
-%-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
-%-------------------------------------------------------
-    \textbf{\textcolor{red}{Are we missing something??????}}
-\end{frame}
-%-------------------------------------------------------
-
-%-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
-%-------------------------------------------------------
-    To handle the example, we need to suppose that you was locked into the\
-    room is sunny and the caretaker wears short skirt. Hence:
-  \begin{itemize}
-      \item $\pi_{x_1}(1) = p(x_1 = S_{sunny}) = 0.7$\\
-      \item $b_{x_1}(y_1) =  0.6$
-  \end{itemize}
-\end{frame}
-%-------------------------------------------------------
-
-%-------------------------------------------------------
-\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
-%-------------------------------------------------------
-   \begin{block}{Kidnapping Example Solution}
-      \begin{equation}
-         P(D) = [\pi_{x_1} \cdot b_{x_1}(y_1)] \cdot [a_{x_1,x_2} \cdot b_{x_2}(y_2)] \cdot [a_{x_3,x_2} \cdot b_{x_3}(y_3)]
-      \end{equation}
-  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $= (0.7 \cdot 0.6) \cdot (0.15 \cdot 0.3) \cdot (0.05 \cdot 0.5)$
-   \end{block}
-\end{frame}
-%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\subsection{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%    Let go back again to \textbf{Kidnapping} example to discover how to apply\ 
+%    Hidden Markov Model.
+%  \begin{figure}[h]
+%    \centering
+%    \includegraphics[width=3.5in,height=2in]{figures/kidnapping_example_model.png}
+%    \caption {\textbf{Kidnapping Example}}
+%  \end{figure}
+%\end{frame}
+%%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%  \begin{figure}[h]
+%    \centering
+%    \includegraphics[width=3in,height=1in]{figures/kidnapping_example_02.png}
+%    \caption {\textbf{What is the probability of this series?}}
+%  \end{figure}
+%\end{frame}
+%%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%  \textbf{Ingredients of "Kidnapping" Hidden Markov Model}
+%  \fontsize{7.5}{10.5}
+% {
+%  \begin{itemize}
+%     \item States: ${S_{sunny}, S_{rainy}, S_{snowy}}$
+%     \item State transition probabilities: 
+%            \begin{center}
+%              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+%                \hline
+%                 \multicolumn{4}{|c|}{Weather Markov Model} \\
+%                \hline
+%                        & Sunny & Rainy & Snowy \\
+%                \hline
+%                     Sunny & 0.8  & 0.15 & 0.05\\
+%                     Rainy & 0.38 & 0.6  & 0.02\\
+%                     Snowy & 0.75 & 0.05 & 0.2\\
+%                \hline
+%              \end{tabular}
+%              \end{center}
+%      \item Distinct states: $\textbf{L} = \{C_1 = Short\ Skirt, C_2 = Umbrella, C_3 = Coat\}$
+%      \item Observation sequences: $Y = \{y_1 = C_3, y_2 = C_3, y_3 = C_2, y_4 = C_2, y_5 = C_1, y_6 = C_2, y_7 = C_2\}$
+%      \item Emission probability matrix:
+%            \begin{center}
+%              \begin{tabular}{ |p{2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+%                \hline
+%                 \multicolumn{4}{|c|}{Emission probability matrix} \\
+%                \hline
+%                        & Skirts & Umbrella & Coat \\
+%                \hline
+%                     Sunny & 0.6  & 0.1 & 0.3\\
+%                     Rainy & 0.05 & 0.65  & 0.3\\
+%                     Snowy & 0    & 0.5 & 0.5\\
+%                \hline
+%              \end{tabular}
+%              \end{center}
+%       \item Initial state distribution: $\pi = (0.7\ \ 0.25\ \ 0.05)$ 
+%  \end{itemize}
+% }
+%\end{frame}
+%%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%    \textbf{\textcolor{red}{Are we missing something??????}}
+%\end{frame}
+%%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%    To handle the example, we need to suppose that you was locked into the\
+%    room is sunny and the caretaker wears short skirt. Hence:
+%  \begin{itemize}
+%      \item $\pi_{x_1}(1) = p(x_1 = S_{sunny}) = 0.7$\\
+%      \item $b_{x_1}(y_1) =  0.6$
+%  \end{itemize}
+%\end{frame}
+%%-------------------------------------------------------
+%
+%%-------------------------------------------------------
+%\begin{frame}{Hidden Markov Model}{Kidnapping Example cont.}
+%%-------------------------------------------------------
+%   \begin{block}{Kidnapping Example Solution}
+%      \begin{equation}
+%         P(D) = [\pi_{x_1} \cdot b_{x_1}(y_1)] \cdot [a_{x_1,x_2} \cdot b_{x_2}(y_2)] \cdot [a_{x_3,x_2} \cdot b_{x_3}(y_3)]
+%      \end{equation}
+%  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $= (0.7 \cdot 0.6) \cdot (0.15 \cdot 0.3) \cdot (0.05 \cdot 0.5)$
+%   \end{block}
+%\end{frame}
+%%-------------------------------------------------------
 
 {\1
 \begin{frame}[plain,noframenumbering]
