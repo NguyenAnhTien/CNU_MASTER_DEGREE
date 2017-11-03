@@ -26,8 +26,19 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\lstset{breakatwhitespace,
+language=Matlab,
+columns=fullflexible,
+keepspaces,
+breaklines,
+tabsize=3, 
+showstringspaces=false,
+extendedchars=true}
 
-%-------------------------------------------------------
 % DEFFINING AND REDEFINING COMMANDS
 %-------------------------------------------------------
 
@@ -47,7 +58,7 @@
 
 \subtitle[Hidden Markov Models]
 {
-      \textbf{v. 1.0.0}
+      \textbf{v. 1.1.0}
 }
 
 \author[Tien Anh Nguyen]
@@ -833,6 +844,109 @@ That is enough for theory. Let go back to \textbf{Weather Example}.
     \includegraphics[width=4in,height=2.3in]{figures/doctor_example_02.png}
     \caption {\textbf{The Doctor and Patient example}}
   \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Learning}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training}
+%-------------------------------------------------------
+    \begin{block}{Hidden Markov Model Training}
+       Given an observation sequence $O$ and the sest of possible states in \
+       the HMM, learn the HMM parameters A and B.
+    \end{block}
+    
+    \begin{itemize}
+       \item The input of a learning algorithm would be an unlabeled sequence \
+             of observations $O$ and a vocabulary of potential hidden states \
+             $Q$.
+    \end{itemize}
+
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Learning}
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Learning}
+%-------------------------------------------------------
+    \begin{block}{Training Algorithm}
+        The standard algorithm for HMM training is the forward-backward, or \
+        Baum-Welch algorithm which is a special case of the\
+        Expectation-Maximization or EM algorithm.
+    \end{block}
+    \begin{block}{Training Algorithm}
+        The algorithm is used for both transition probabilities A and the \
+        emission probabilities B of the Hidden Markov Model.
+    \end{block}
+    \begin{block}{Training Algorithm}
+        It works by computing an initial estimate for the probabilites, then \
+        using those estimates to computing a better estimate, and so on, \
+        iteratively improving the probabilities that it learns.
+    \end{block}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training: Example 6.3.1}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/coin_toss.jpg}
+    \caption {\textbf{Example 6.3.1}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training: Example 6.3.1}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/toss_coin_example_01.png}
+    \caption {\textbf{The Doctor and Patient example}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training: Example 6.3.1}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/toss_coin_example_02.png}
+    \caption {\textbf{The Doctor and Patient example}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training: Example 6.3.1}
+%-------------------------------------------------------
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4in,height=2.3in]{figures/toss_coin_example_03.png}
+    \caption {\textbf{The Doctor and Patient example}}
+  \end{figure}
+\end{frame}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\begin{frame}{Hidden Markov Model}{Training: Example 6.3.1}
+%-------------------------------------------------------
+    \begin{block}{Source Code}
+        A1 = [0.7 0.3;0.7 0.3];\\
+        B1 = [0.8 0.3;0.2 0.7];\\
+        pi1 = [0.7 0.3]';\\
+         
+        O = [1 1 1 2 1 1 1 1 2 1 1 1 1 2 2 1 1];
+        
+        [Pr1]=BWDoHMMst(pi1,A1,B1,O);
+        
+        [Pr1]=BWDoHMMsc(pi1,A1,B1,O);
+
+    \end{block}
 \end{frame}
 %-------------------------------------------------------
 
