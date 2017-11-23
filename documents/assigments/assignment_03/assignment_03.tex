@@ -1,0 +1,257 @@
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{physics}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{pythonhighlight}
+
+\graphicspath{ {../../../datasets/images/chapter_02/} }
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} 
+\lstloadlanguages{Matlab}
+\lstset{language=Matlab,
+        frame=single,
+        basicstyle=\small\ttfamily,
+        keywordstyle=[1]\color{Blue}\bf,
+        keywordstyle=[2]\color{Purple},
+        keywordstyle=[3]\color{Blue}\underbar,
+        identifierstyle=,
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple},
+        showstringspaces=false,
+        tabsize=5, 
+        morekeywords={rand},
+        morekeywords=[2]{on, off, interp},
+        morekeywords=[3]{test},
+        morecomment=[l][\color{Blue}]{...},
+        numbers=left,
+        firstnumber=1,
+        numberstyle=\tiny\color{Blue},
+        stepnumber=5
+}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\matlabscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#2}
+\newcommand{\hmwkDueDate}{Wednesday,\ September\ 27,\ 2017}
+\newcommand{\hmwkClass}{3-D\ DIVISION} % Course/class
+\newcommand{\hmwkClassTime}{15:00pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{leecw} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Tien Anh Nguyen} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+
+Consider two images $x_1$, $x_2$ of the same point p from two camera positions with \
+relative pose (R, T), where $R \in SO(3)$ is the relative orientation and \
+ $T \in \!R^3$ is the relative position. Then $x_1,\ x_2$ satisfy
+ \begin{equation}
+ \label{essential constraint}
+   \langle x_2, T \times Rx_1\rangle = 0,\ \ or\ \ x_2^T\hat T R x_1 = 0
+ \end{equation}
+
+ \begin{equation}
+ \label{essential matrix}
+   E = \hat TR\ \in\ \!R^{3x3}
+ \end{equation}
+
+The matrix \textbf{E} is called the \textbf{essential matrix}. The epipolar constraint \
+[\ref{essential constraint}] is also called the \textbf{essential constraint}.
+
+\textbf{Theorem 5.5(Characterization of the essential matrix)}. A nonzero matrix $E\ \in\ \!R^{3x3}$ \
+is an essential matrix if and only if \textbf{E} has a singular value decomposition (SVD).
+ \begin{equation}
+   E = U \Sigma V^T\ with \ \Sigma = diag{\sigma,\sigma,0}
+ \end{equation}
+
+Because E has a singular value decomposition, we can rewrite E as $E = U \Sigma V^T$.
+We need to prove that $E = \hat TR$.
+By definition, for any essential matrix \textbf{E}, there exists $(R,T)$ with $R \in SO(3)$,\
+such that $\hat TR=E$. SO(3) is a Lie group. For T, there exists a rotation matrix $R_0$ such \
+that $R_0T=[0,0,||T||]^T$. Define $a = R_0T \ \in \!R^3$.
+From \textbf{Lemma 5.4}, for a vector $T\ \in\ \!R^3$ and a matrix $K\ \in\ \!R^{3x3}$, \
+if $det(K)\ =\ +1$ and $T^{'}\ =\ KT$, then $\hat T\ =\ K^T \hat{T'}K$.
+Define $a = R_0T \in \!R^3$. Since $det(R_0) = 1$, we know that $\hat T = R_0^T \hat a R_0$.
+Then $EE^T = \hat T R R^T \hat T^T = \hat T \hat T^T = R_0^T \hat a \hat a^T R_0$.
+We use the matrices
+ \begin{equation}
+   \hat a = 
+      \begin{bmatrix}
+         0 & -||T|| & 0 \\
+         ||T||  &  0 & 0 \\
+         0 &  0 & 1
+      \end{bmatrix}
+   \hat a^T = 
+     \begin{bmatrix}
+          0 & ||T|| & 0 \\
+         -||T|| & 0 & 0 \\
+          0 & 0 & 0
+     \end{bmatrix}
+ \end{equation}
+
+ The singular values of the essential matrix $E=\hat TR$ are $(||T||, ||T||, 0)$. We need to prove that \
+U, V have determinant is +1.
+ \begin{equation}
+   E = \hat TR = R_0^T \hat a R_0 R
+ \end{equation}
+ \begin{equation}
+   R_Z(\frac{+\pi}{2}) = 
+      \begin{bmatrix}
+         0 & -1 & 0 \\
+         1 &  0 & 0 \\
+         0 &  0 & 1
+      \end{bmatrix}
+ \end{equation}
+
+$R_Z(\frac{+\pi}{2})$ is the matrix that represents a rotation around the Z-axis by an angle of $\frac{+\pi}{2}$.
+
+ \begin{equation}
+    \hat a = R_Z(\frac{+\pi}{2})R_Z^T(\frac{+\pi}{2})\hat a = R_Z(\frac{+\pi}{2})diag\{||T||, ||T||, 0\}
+ \end{equation}
+
+\begin{equation}
+  (\hat T_1, R_1) = (U R_Z(\frac{+\pi}{2}) \Sigma U^T, U R_Z^T(\frac{+\pi}{2}) V^T)\\
+\end{equation}
+\begin{equation}
+  (\hat T_2, R_2) = (U R_Z(\frac{-\pi}{2}) \Sigma U^T, U R_Z^T(\frac{-\pi}{2}) V^T)
+\end{equation}
+
+ \begin{equation}
+   \hat T_1 R_1 = \hat T_2 R_2 = E
+ \end{equation}
+
+Thus, E is an essential matrix.
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
