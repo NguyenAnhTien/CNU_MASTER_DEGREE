@@ -558,12 +558,12 @@ called pruning. We can use function\
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in]{figures/exercise_bwmorph_07.jpg}
-        \caption{bwmorph (f, 'thin', 2)}
+        \caption{Original Image}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in]{figures/exercise_bwmorph_06.jpg}
-        \caption{bwmorph (f, 'thin', 1)}
+        \caption{bwmorph(f, 'skel', Inf)}
     \end{subfigure}%
 \end{figure}
 
@@ -572,12 +572,14 @@ called pruning. We can use function\
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in]{figures/exercise_bwmorph_08.jpg}
-        \caption{bwmorph(f, 'skel', Inf)}
+        \caption{bwmorph(fs , 'spur', 5)}
     \end{subfigure}%
 \end{figure}
 
 \end{homeworkProblem}
 %------------------------------------------------------------------------------
+
+\newpage
 
 %------------------------------------------------------------------------------
 %	PROBLEM 6 
@@ -587,95 +589,45 @@ called pruning. We can use function\
 
 \begin{homeworkProblem}
 \maketitle
-\subsection{Function bwmorph}
-\matlabscript{mfiles/exercise_bwmorph}{Function bwmorph}
-
+\subsection{Reconstruction}
+\matlabscript{mfiles/exercise_reconstruction}{Reconstruction}
 
 \newpage
-The function \textbf{BW2 = bwmorph(BW,operation)} applies a specific \
-morphological operation to the binary image BW.
 
-The function \textbf{bwmorph} implements a variety of morphological operations \
-based on combinations of dilations, erosions, and lookup table operations.
-\textbf{f} is an input binary image, \textbf{operation} is a string specifying \
-the desired operation, and \textbf{n} is a positive integer specifying the \
-number of times the operation should be repeated. If argument \textbf{n} \
-is omitted, the operation is performed once.
-
-In the textbook, we focus on two operation are: \textbf{thinning} \
-and \textbf{skeletonizing}.
-
-If \textbf{n = Inf}, the \textbf{bwmorph} function repeat the operation until \
-the image stops changing. This is called repeating an operation\
- \textbf{until stability}.
-
-\textbf{Skeletonization} is a way to reduce binary image objects to a set of \
-thin strokes that retain important information about the shape of the original \
-object. The skeleton means the main structure that supports a building.
+\textbf{IM = imreconstruct(marker,mask)} performs morphological reconstruction \
+of the image marker under the image mask. marker and mask can be two intensity \
+images or two binary images with the same size. The returned image IM is an \
+intensity image or a binary image, depending on the input images, and is \
+the same size as the input images.
+\textbf{marker} must be the same size as mask, and its elements must be less \
+than or equal to the corresponding elements of mask. If the values in marker \
+are greater than corresponding elements in mask, imreconstruct clips the \
+values to the mask level before starting the procedure.
 
 \begin{figure}[h]
 \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_01.jpg}
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_01.jpg}
         \caption{Original Image}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_02.jpg}
-        \caption{bwmorph (f, 'thin', 1)}
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_02.jpg}
+        \caption{imerode(f, ones(51, 1))}
     \end{subfigure}%
 \end{figure}
 \begin{figure}[h]
 \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_03.jpg}
-        \caption{bwmorph (f, 'thin', 2)}
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_03.jpg}
+        \caption{imopen(f, ones(51, 1))}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_04.jpg}
-        \caption{bwmorph (f, 'thin', 1)}
-    \end{subfigure}%
-\end{figure}
-
-\begin{figure}[h]
-\centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_05.jpg}
-        \caption{bwmorph(f, 'skel', Inf)}
-    \end{subfigure}%
-\end{figure}
-
-\newpage
-
-Skeletonization and thinning often produce short extraneous spurs, called \
-parasitic components. The process of cleaning up (or removing) these spurs is
-called pruning. We can use function\
- \textbf{fs=bwmorph(fs, 'spur', 5)} for this purpose.
-
-\begin{figure}[h]
-\centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_07.jpg}
-        \caption{bwmorph (f, 'thin', 2)}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_06.jpg}
-        \caption{bwmorph (f, 'thin', 1)}
-    \end{subfigure}%
-\end{figure}
-
-\begin{figure}[h]
-\centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.2in]{figures/exercise_bwmorph_08.jpg}
-        \caption{bwmorph(f, 'skel', Inf)}
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_04.jpg}
+        \caption{imreconstruct(fe, f)}
     \end{subfigure}%
 \end{figure}
 
