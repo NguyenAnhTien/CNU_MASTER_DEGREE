@@ -294,4 +294,344 @@ cannot get the same result as the text book.
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+\maketitle
+\subsection{Combining Dilation and Erosion}
+\matlabscript{mfiles/exercise_combine_strel_dilation}{Combining Dilation and Erosion}
+
+
+\newpage
+
+The function \textbf{IM2 = imopen(IM,SE)} performs morphological opening on \
+the grayscale or binary image IM with the structuring element SE. The argument \
+SE must be a single structuring element object, as opposed to an array of \
+objects. The morphological open operation is an erosion followed by a dilation, \
+using the same structuring element for both operations.
+ 
+The function \textbf{IM2 = imclose(IM,SE)} performs morphological closing on \
+the grayscale or binary image IM, returning the closed image, IM2. The \
+structuring element, SE, must be a single structuring element object, as \
+opposed to an array of objects. The morphological close operation is a \
+dilation followed by an erosion, using the same structuring element for both \
+operations.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_01.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_02.jpg}
+        \caption{r = 10}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_03.jpg}
+        \caption{r = 5}
+    \end{subfigure}%
+\end{figure}
+
+\newpage
+
+An opening/closing sequence can be used for noise reduction.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_04.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_05.jpg}
+        \caption{The noisy spots were removed by opening the image}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_comb_deli_erosion_06.jpg}
+        \caption{final result, in which most of the noise was removed}
+    \end{subfigure}%
+\end{figure}
+
+\end{homeworkProblem}
+%------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+%	PROBLEM 5
+%------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+\maketitle
+\subsection{The Hit-or-Miss Transformation}
+\matlabscript{mfiles/exercise_hit_miss}{The Hit-or-Miss Transformation}
+
+
+\newpage
+
+The function \textbf{BW2 = bwhitmiss(BW1,SE1,SE2)} performs the hit-miss \
+operation defined by the structuring elements SE1 and SE2. The hit-miss \
+operation preserves pixels whose neighborhoods match the shape of SE1 and \
+don't match the shape of SE2. SE1 and SE2 can be flat structuring element \
+objects, created by strel, or neighborhood arrays. The neighborhoods of SE1 \
+and SE2 should not have any overlapping elements. The syntax \
+\textbf{bwhitmiss(BW1,SE1,SE2)} is equivalent to \textbf{imerode(BW1,SE1)} and \
+\textbf{imerode(~BW1,SE2)}.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_01.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_02.jpg}
+        \caption{Result of applying the hitor-miss transformation}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_03.jpg}
+        \caption{interval=[ -1 -1 -1; -1 1 1; -1 1 0]}
+    \end{subfigure}%
+\end{figure}
+
+\newpage
+
+The M-Function \textbf{endpoints} uses \textbf{makelut} and \textbf{applylut} \
+to detect end points in a binary image. We define an end point as a foreground \
+pixel whose neighbor configuration matches the hit-or-miss interval matrix \
+[0 1 0; -1 1 -1; -1 -1 -1] or any of its 90-degree rotations; or a foreground \
+pixel whose neighbor configuration matches the hit-or-miss interval matrix \
+[1 -1 -1; -1 1 -1; -1 -1 -1] or any of its 90-degree rotations. \
+Function \textbf{endpoints} computes and then applies a lookup table for \
+detecting end points in an input image.
+
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_07.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_08.jpg}
+        \caption{Result of applying the hitor-miss transformation}
+    \end{subfigure}%
+\end{figure}
+
+\newpage
+
+The lookup table is constructed next by calling \textbf{makelut} with a \
+function handle to \textbf{conwaylaws}.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_04.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_05.jpg}
+        \caption{Generation 2}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_hit_miss_06.jpg}
+        \caption{Generation 3}
+    \end{subfigure}%
+\end{figure}
+
+\end{homeworkProblem}
+%------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+%	PROBLEM 6 
+%------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+\maketitle
+\subsection{Function bwmorph}
+\matlabscript{mfiles/exercise_bwmorph}{Function bwmorph}
+
+
+\newpage
+The function \textbf{BW2 = bwmorph(BW,operation)} applies a specific \
+morphological operation to the binary image BW.
+
+The function \textbf{bwmorph} implements a variety of morphological operations \
+based on combinations of dilations, erosions, and lookup table operations.
+\textbf{f} is an input binary image, \textbf{operation} is a string specifying \
+the desired operation, and \textbf{n} is a positive integer specifying the \
+number of times the operation should be repeated. If argument \textbf{n} \
+is omitted, the operation is performed once.
+
+In the textbook, we focus on two operation are: \textbf{thinning} \
+and \textbf{skeletonizing}.
+
+If \textbf{n = Inf}, the \textbf{bwmorph} function repeat the operation until \
+the image stops changing. This is called repeating an operation\
+ \textbf{until stability}.
+
+\textbf{Skeletonization} is a way to reduce binary image objects to a set of \
+thin strokes that retain important information about the shape of the original \
+object. The skeleton means the main structure that supports a building.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_01.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_02.jpg}
+        \caption{bwmorph (f, 'thin', 1)}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_03.jpg}
+        \caption{bwmorph (f, 'thin', 2)}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_04.jpg}
+        \caption{bwmorph (f, 'thin', 1)}
+    \end{subfigure}%
+\end{figure}
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_05.jpg}
+        \caption{bwmorph(f, 'skel', Inf)}
+    \end{subfigure}%
+\end{figure}
+
+\newpage
+
+Skeletonization and thinning often produce short extraneous spurs, called \
+parasitic components. The process of cleaning up (or removing) these spurs is
+called pruning. We can use function\
+ \textbf{fs=bwmorph(fs, 'spur', 5)} for this purpose.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_07.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_06.jpg}
+        \caption{bwmorph(f, 'skel', Inf)}
+    \end{subfigure}%
+\end{figure}
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_bwmorph_08.jpg}
+        \caption{bwmorph(fs , 'spur', 5)}
+    \end{subfigure}%
+\end{figure}
+
+\end{homeworkProblem}
+%------------------------------------------------------------------------------
+
+\newpage
+
+%------------------------------------------------------------------------------
+%	PROBLEM 6 
+%------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+\maketitle
+\subsection{Reconstruction}
+\matlabscript{mfiles/exercise_reconstruction}{Reconstruction}
+
+\newpage
+
+\textbf{IM = imreconstruct(marker,mask)} performs morphological reconstruction \
+of the image marker under the image mask. marker and mask can be two intensity \
+images or two binary images with the same size. The returned image IM is an \
+intensity image or a binary image, depending on the input images, and is \
+the same size as the input images.
+\textbf{marker} must be the same size as mask, and its elements must be less \
+than or equal to the corresponding elements of mask. If the values in marker \
+are greater than corresponding elements in mask, imreconstruct clips the \
+values to the mask level before starting the procedure.
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_01.jpg}
+        \caption{Original Image}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_02.jpg}
+        \caption{imerode(f, ones(51, 1))}
+    \end{subfigure}%
+\end{figure}
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_03.jpg}
+        \caption{imopen(f, ones(51, 1))}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/exercise_imreconstruct_04.jpg}
+        \caption{imreconstruct(fe, f)}
+    \end{subfigure}%
+\end{figure}
+
+\end{homeworkProblem}
+%------------------------------------------------------------------------------
+
 \end{document}
