@@ -493,6 +493,51 @@ most popular case which can happened in the real world.
 This dataset contains three color video sequence captured at different times of the day on morning, evening, sunny or cloudy. Those videos was captured at \
 different driving environments: highway and urban.
 
+\section{Histograms of Oriented Gradients}
+In this paper, the histograms of oriented gradients is used to extract useful information and throwing away extraneous information.
+Those useful information is called feature descriptor. The image is converted from size $width \times length \times 3$ to a feature vectors. Those vectors is very useful for image classification algorithm such as SVM or deep learning.
+
+In the HOG algorithm, the useful information is the distribution of direction of gradients. The magnitude of gradients provide the clue about the edges and corners of a object. Those clue provide a lot information about shape of the object.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{0.3\textwidth} 
+		\centering
+		\includegraphics[scale=0.3]{figures/hog_figure_01.png}
+	\end{subfigure}%
+	\caption{HOG Working Process}
+	\label{HOG_01}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+%	\begin{subfigure}[t]{0.2\textwidth} 
+%		\centering
+%		\includegraphics[scale=0.8]{figures/hog_non_vehicle.jpg}
+%		\caption{HOG of Non-vehicle}
+%	\end{subfigure}
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/hog_far.jpg}
+		\caption{Far Car HOG Feature}
+	\end{subfigure}% 
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/hog_left.jpg}
+		\caption{Left Car HOG Feature}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/hog_right.jpg}
+		\caption{Right Car HOG Feature}
+	\end{subfigure} 
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/hog_middle_close.jpg}
+		\caption{Middle Close HOG Feature}
+	\end{subfigure}% 
+\end{figure}
+
 \section{Linear Support Vector Machine Approach}
 
 In the support vector machine (SVM) approach, we are using the combination of two methods: Histograms of Oriented Gradients (HOG) and linear support vector machine. The \ref{SAP} describe a general working process of the SVM method. The HOG is in the "feature descriptor" family. It is intent to produce as same as feature descriptor for the same objects in variety of condition environments. The SVM is trained to recognize HOG features of vehicles.
