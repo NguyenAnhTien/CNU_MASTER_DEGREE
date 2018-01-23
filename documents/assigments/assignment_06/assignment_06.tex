@@ -482,7 +482,7 @@ Self-driving car and driver assistant system are two of the hot topic of AI nowa
 
 \section{Datasets}
 In this paper, two car datasets are used. The former is GTI vehicle image\
- dataset. The latter is KITTI vision benchmark suite.
+ dataset. The latter is LISA vehicle dataset.
 
 \subsection{GTI vehicle image dataset}
 The GTI dataset contains 3900 non-car images and 3425  car images. Each class \
@@ -516,6 +516,30 @@ In the HOG algorithm, the useful information is the distribution of direction of
 %		\includegraphics[scale=0.8]{figures/hog_non_vehicle.jpg}
 %		\caption{HOG of Non-vehicle}
 %	\end{subfigure}
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/image0104.png}
+		\caption{Far Car HOG Feature}
+	\end{subfigure}% 
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/image0032.png}
+		\caption{Left Car HOG Feature}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/image0038.png}
+		\caption{Right Car HOG Feature}
+	\end{subfigure} 
+	\begin{subfigure}[t]{0.2\textwidth} 
+		\centering
+		\includegraphics[scale=0.8]{figures/image0026.png}
+		\caption{Middle Close HOG Feature}
+	\end{subfigure}% 
+\end{figure}
+
+\begin{figure}[h]
+	\centering
 	\begin{subfigure}[t]{0.2\textwidth} 
 		\centering
 		\includegraphics[scale=0.8]{figures/hog_far.jpg}
