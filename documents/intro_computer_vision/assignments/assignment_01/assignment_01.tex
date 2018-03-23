@@ -218,7 +218,31 @@ In homogeneous coordinate system, given a point $X_1 \sim [x_1 \ \ y_1 \ \ z_1]^
 \subsection{Crossing two points}
 In the Cartesian coordinate system, given a line $L_1 = x -2y + 5 = 0$. Hence $L_1$ is presented by $l_1 \sim [1\ -2\ \ 5]^T$ in homogeneous coordinate system.
 
-In homogeneous system, given 2 point $x_1 \sim [-1\ 2\ 1]^T$ and $x_2 \sim [3\ 4\ 1]^T$
+In homogeneous system, given 2 point $x_1 \sim [-1\ 2\ 1]^T$ and $x_2 \sim [3\ 4\ 1]^T$. We have:
+
+\begin{equation}
+	l_1^Tx_1 = [1\ -2\ \ 5]
+	\begin{bmatrix}
+	-1 \\
+	 2 \\
+	 1
+	\end{bmatrix}
+	= -1 -4 + 5 = 0
+\end{equation}
+
+Similarly for $x_2$
+\begin{equation}
+l_1^Tx_2 = [1\ -2\ \ 5]
+\begin{bmatrix}
+3 \\
+4 \\
+1
+\end{bmatrix}
+= 3 -8 + 5 = 0
+\end{equation}
+
+In the Cartesian coordinate, the points $x_1$ and $x_2$ belong to $L_1$. When they are converted to homogeneous coordinate, they are still in this line.
+
 \end{homeworkProblem}	
 %----------------------------------------------------------------------------------------
 
