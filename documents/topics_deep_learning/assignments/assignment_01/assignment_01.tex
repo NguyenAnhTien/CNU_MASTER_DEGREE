@@ -204,12 +204,34 @@ Unsupervised learning is the future of deep learning. Human and animal learning 
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-%       PROBLEM 1
+%       PROBLEM 2
 %-------------------------------------------------------------------------------
 \newpage
 \begin{homeworkProblem}
-    \subsection{Summary of the paper Lecun, Y., Bengio, Y., \& Hinton, G. (2015). Deep learning.Nature, 521(7553), 436–444.}
+    \subsection{Using neural nets to recognize handwritten digits}
+    \subsubsection{Introduction}
+    Human can easily recognize the digit numbers from 0 to 9. However, it is very difficult for machines to do the same task.
     
+    \subsubsection{Neural Networks}
+    Neural networks approach the problem in a different way. The idea is to take a large number of handwritten digits, known as training examples, and then develop a system which can learn from those training examples. The neural network automatically infer rules from the examples to recognize the digit numbers.
+    
+    \subsubsection{Perceptrons}
+    A perceptron takes several inputs, $x_1$, $x_2$, ..., and produces a single or multiple outputs. The perception is a machine which makes decisions by weighing up evidence.
+    To represent a complex desired decision-making model, we use multiple layer perceptrons. The first layer of perceptrons weight the input evidence. The second layer is making a decision by weighing up the results from the first layer. In this way a perceptron in the second layer can make a decision at a more complex and more abstract level than perceptrons in the first layer. And even more complex decisions can be made by the perceptron in the third layer.
+    
+    \subsubsection{Sigmoid Neurons}
+    A sigmoid neuron has input $x_1$, $x_2$, ... which are real number in [0, 1] interval. The activation is the sigmoid function
+    \subsubsection{The architecture of neural networks}
+    The input layer has $64 \times 64 = 4096$ input neurons. The output layer will contains just a single neuron, with output values less than 0.5 indicating "input image is not a specific number", and values greater than 0.5 indicating "input image is the specific number".
+    
+    \subsubsection{A simple network to classify handwritten digits}
+    The architecture contains three layers: one hidden layer. The input image has $28 \times 28$ pixel. Therefore, the input layer contains $28 \times 28 = 784$ neurons. The output layer has 10 neurons for digit numbers from 0 to 9. The number of neurons of the hidden layer is based on experiments.
+    \subsubsection{Learning with gradient descent}
+    We are going to find an algorithm which has ability to find weights and biases so that the output of the neural network approximate the desired values for all training input $x$. Let define a cost function
+    \begin{equation}
+        C(w, b) = \frac{1}{2n}\sum_{x}||y(x) - a||^2
+    \end{equation}
+    At the point the cost function reaches global minimum values, we find the suitable weights and biases for our model.
 \end{homeworkProblem}
 %-------------------------------------------------------------------------------
 
