@@ -121,8 +121,8 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{Assignment\ \#1}
-\newcommand{\hmwkDueDate}{Monday,\ March\ 26,\ 2018}
-\newcommand{\hmwkClass}{IMAGE\ PROCESSING} % Course/class
+\newcommand{\hmwkDueDate}{Monday,\ Apr\ 02,\ 2018}
+\newcommand{\hmwkClass}{INTRODUCTION TO COMPUTER VISION} % Course/class
 \newcommand{\hmwkClassTime}{14:00pm} % Class/lecture time
 \newcommand{\hmwkClassInstructor}{gslee} % Teacher/lecturer
 \newcommand{\hmwkAuthorName}{Tien Anh Nguyen} % Your name
@@ -165,109 +165,120 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-\subsection{Vanishing Line}
-\matlabscript{problem_1}{Problem 1 demonstration in Matlab}
-
-In the Cartesian coordinate system, given 2 parallel lines:
-$L_1$ is $x - 2y + 5 = 0$ and $L_2$ is $x - 2y + 1 = 0$
-
-\begin{figure}[h]
-	\begin{subfigure}[t]{0.3\textwidth}
-		\centering
-		\includegraphics[scale=0.2]{figures/figure_01.jpg}
-	\end{subfigure}%
-\end{figure}
-
-In homogeneous coordinate system, the $L_1$ is represented by:
-\begin{equation}
-l_1 \sim [1\ -2\ \ 5]^T
-\end{equation}
-
-and the $L_2$ is represented by:
-\begin{equation}
-l_2 \sim [1\ -2\ \ 1]^T
-\end{equation}
-
-In homogeneous coordinate system, given a point $X_1 \sim [x_1 \ \ y_1 \ \ z_1]^T$ which belongs to the line $l_1$. Other words,
+\subsection{Estimate Camera Parameters}
+\matlabscript{mfiles/estimate_camera_parameters}{Estimate Camera Parameters}
 
 \begin{equation}
-	l_1^Tx_1 = 0
-\end{equation}
- 
- Similarly, we have other equation for $l_2$:
- 
- \begin{equation}
- l_2^Tx_2 = 0
- \end{equation}
- 
- where $X_2 \sim [x_2 \ \ y_2 \ \ z_2]^T$
- 
- The intersection of the 2 lines is the roots for the following linear equation system:
- 
- \begin{equation}
- 	\systeme*{x_1 -2y_1 + 5z_1 = 0,x_1 -2y_1 + z_1 = 0}
- 	\iff
- 	\systeme*{x_1 = t, y_1 = \frac{t}{2}, z_1 = 0}
- \end{equation}
- 
- Hence, for example $x_1 \sim [1 \ \frac{1}{2} \ 0]$ or $x_2 \sim [0 \ 0 \ 0]$ is represented our intersection point. We cannot interpret the result by diving the third component of $x_1$ because it is zero.
- 
-\end{homeworkProblem}
-
-\begin{homeworkProblem}
-\subsection{Crossing two points}
-In the Cartesian coordinate system, given a line $L_1 = x -2y + 5 = 0$. Hence $L_1$ is presented by $l_1 \sim [1\ -2\ \ 5]^T$ in homogeneous coordinate system.
-
-In homogeneous system, given 2 point $x_1 \sim [-1\ 2\ 1]^T$ and $x_2 \sim [3\ 4\ 1]^T$. We have:
-
-\begin{equation}
-	l_1^Tx_1 = [1\ -2\ \ 5]
+Intrinsic\ Matrix\ K = 
 	\begin{bmatrix}
-	-1 \\
-	 2 \\
-	 1
+		824.1863 &     0    &   0  \\
+		    0    & 802.4850 &   0   \\
+		266.4807 & 312.9615 & 1.0000
 	\end{bmatrix}
-	= -1 -4 + 5 = 0
 \end{equation}
 
-Similarly for $x_2$
 \begin{equation}
-l_1^Tx_2 = [1\ -2\ \ 5]
+Rotation\ Matrix\ R = 
 \begin{bmatrix}
-3 \\
-4 \\
-1
+-0.27253 & -0.57698 &  0.60160  \\
+0.35869  & -0.27629 &  -0.01536 \\
 \end{bmatrix}
-= 3 -8 + 5 = 0
 \end{equation}
 
-In the Cartesian coordinate, the points $x_1$ and $x_2$ belong to $L_1$. When they are converted to homogeneous coordinate, they are still in this line.
+\begin{equation}
+Translation\ Vector\ t = 
+\begin{bmatrix}
+-206.63883 & -51.99309 &  913.28225  \\
+-63.85389  & -122.74232 &  395.19010 \\
+\end{bmatrix}
+\end{equation}
+
+
+Camera translations, specified as an M-by-3 matrix. This matrix contains translation vectors for M images. The vectors contain the calibration pattern that estimates the calibration parameters. Each row of the matrix contains a vector that describes the translation of the camera relative to the corresponding pattern, expressed in world units.
+
+
+\begin{equation}
+	[x\ y\ 1] = [X\ Y\ Z\ 1]
+	\begin{bmatrix}
+	R \\
+	t
+	\end{bmatrix}
+	K
+\end{equation}
+
+In matlab, the vector \textbf{t} is not a single vector, but a matrix which contains multiple vectors. It is different in the text books.
 
 \end{homeworkProblem}
-%----------------------------------------------------------------------------------------
 
-%----------------------------------------------------------------------------------------
+\newpage
+
 \begin{homeworkProblem}
-    \subsection{2D Transformation in Matlab}
-        \matlabscript{problem_3}{Demonstration of problem 3 in Matlab}
-
-\begin{figure}[h]
-	\centering
-    \begin{subfigure}[h]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.2]{figures/figure_02.jpg}
-    \end{subfigure}%
-\end{figure}
-
-\begin{figure}[h]
-	\centering
- \begin{subfigure}[h]{0.3\textwidth}
- 	\centering
- 	\includegraphics[scale=0.5]{figures/figure_03.jpg}
- \end{subfigure}%
-\end{figure}
-
+	\subsection{Distortion}
+	
+	\matlabscript{mfiles/camera_intrinsic}{Distortion}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{figures/distortion.jpg}
+		\end{subfigure}%
+	\end{figure}
 \end{homeworkProblem}
-%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+	\subsection{Simple Example}
+	\begin{equation}
+	Intrinsic\ Matrix\ K = 
+	\begin{bmatrix}
+	1 & 0 & 0  \\
+	0 & 1 & 0   \\
+	1 & 1 & 1
+	\end{bmatrix}
+	\end{equation}
+	
+	\begin{equation}
+	Rotation\ Matrix\ R = 
+	\begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1
+	\end{bmatrix}
+	\end{equation}
+	
+	\begin{equation}
+	Translation\ Vector\ t = 
+	\begin{bmatrix}
+	0 & 0 & 0 \\
+	\end{bmatrix}
+	\end{equation}
+
+\newpage
+
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.6]{figures/cube_picture.png}
+		\end{subfigure}%
+	\end{figure}
+	
+	\begin{equation}
+		p_5 = [3\ 3\ 3]\ or\ [1\ 1\ 1]
+	\end{equation}
+	
+	\begin{equation}
+		p_6 = [5\ 3\ 3]\ or\ [\frac{5}{3}\ 1\ 1]
+	\end{equation}
+	
+	\begin{equation}
+		p_2 = [2\ 0\ 0]
+	\end{equation}
+	
+	\begin{equation}
+		p_1 = [2\ 0\ 0]
+	\end{equation}
+	
+\end{homeworkProblem}
 
 \end{document}
