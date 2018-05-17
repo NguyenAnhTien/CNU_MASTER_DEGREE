@@ -30,7 +30,7 @@ class RBM(object):
         return prob_h_given_v_vector, prob_h_given_v
 
     def sample_visible(self, hidden_output):
-        wy = torch.mm(y, self.W)
+        wy = torch.mm(hidden_output, self.W)
         activation = wy + self.b.expand_as(wy)
         prob_v_given_h_vector = torch.sigmoid(activation)
         prob_v_given_h = torch.bernoulli(prob_v_given_h_vector)
