@@ -101,7 +101,7 @@ if __name__ == '__main__':
                 vk[v0 < 0] = v0[v0<0]
             phk, _ = rbm.sample_hidden(vk)
             rbm.train(v0, vk, ph0, phk)
-            train_loss += torch.mean(torch.abs(v0[v0 >= 0] - vk))
+            train_loss += torch.mean(torch.abs(v0[v0 >= 0] - vk[v0>=0]))
             s += 1.
         print('epoch: ' + str(epoch) + ' loss: ' + str(trains_loss/s))
 
