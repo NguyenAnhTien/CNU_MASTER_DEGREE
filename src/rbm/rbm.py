@@ -39,4 +39,4 @@ class RBM(object):
     def train(self, v0, vk, ph0, phk):
         self.W += torch.mm(v0.t(), ph0) - torch.mm(vk.t(), phk)
         self.b += torch.sum((v0 - vk), 0)
-        self.a += torch.sum((p0 - phk), 0)
+        self.a += torch.sum((ph0 - phk), 0)
