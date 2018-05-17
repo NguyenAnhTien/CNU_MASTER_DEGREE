@@ -27,7 +27,7 @@ class RBM(object):
         prob_h_given_v_vector = torch.sigmoid(activation)
         #prob_hidden_given_visible is one-hot vector
         prob_h_given_v = torch.bernoulli(prob_h_given_v_vector)
-        return prob_hidden_given_visible
+        return prob_h_given_v_vector, prob_h_given_v
 
     def sample_visible(self, hidden_output):
         wy = torch.mm(y, self.W)
