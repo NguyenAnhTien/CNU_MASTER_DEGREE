@@ -17,7 +17,7 @@ class RBM(object):
        normal distribution with mean 0 and variance 1 and 
        shape = (number_visible(row), number_hidden(column))
        """
-       self.W = torch.randn(number_visible, number_hidden)
+       self.W = torch.randn(number_hidden, number_visible)
        self.a = torch.randn(1, number_hidden) #bias of hidden nodes
        self.b = torch.randn(1, number_visible) #bias of visible nodes
 
