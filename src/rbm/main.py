@@ -4,6 +4,8 @@ import torch
 import numpy
 import pandas
 
+import rbm
+
 if __name__ == '__main__':
 
     movies_data_path = '../../datasets/ml-100k/u.item'
@@ -52,6 +54,7 @@ if __name__ == '__main__':
         data_tmp.append(list(ratings))
 
     training_set = data_tmp
+    training_set = torch.FloatTensor(training_set)
     training_set[training_set == 0] = -1
     training_set[training_set == 1] = 0
     training_set[training_set == 2] = 0
@@ -67,14 +70,13 @@ if __name__ == '__main__':
         data_tmp.append(list(ratings))
 
     test_set = data_tmp
+    test_set = torch.FloatTensor(test_set)
     test_set[test_set == 0] = -1
     test_set[test_set == 1] = 0
     test_set[test_set == 2] = 0
     test_set[test_set >= 3] = 1
 
     """V. Convert data to Torch tensors"""
-    training_set = torch.FloatTensor(training_set)
-    test_set = torch.FloatTensor(test_set)
 
     number_visible = len(training_set[0])
     number_hidden = 100
@@ -82,7 +84,7 @@ if __name__ == '__main__':
 
     """
     """
-    rbm = RBM(number_visible, number_hidden)
+    rbm = rbm.RBM(number_visible, number_hidden)
 
     epochs = 10
 
