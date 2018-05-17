@@ -115,7 +115,7 @@ if __name__ == '__main__':
         if len(vt[vt >= 0]) > 0:
             _, hidden = rbm.sample_hidden(visible)
             _, visible = rbm.sample_visible(hidden)
-            test_loss += torch.mean(torch.abs(vt[vt >= 0] - visible[visible >= 0]))
+            test_loss += torch.mean(torch.abs(vt[vt >= 0] - visible[vt >= 0]))
             s += 1.
 
     print(' test loss: ' + str(test_loss/s))
