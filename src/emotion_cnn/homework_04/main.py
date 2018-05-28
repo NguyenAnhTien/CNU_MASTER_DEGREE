@@ -9,6 +9,7 @@ from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Dropout
 from keras.layers import Flatten
+from keras.layers import Activation
 
 def read_data(data_file_name):
     """
@@ -52,40 +53,10 @@ def scale_data(data):
 def convert_label_to_category(labels):
     return keras.utils.to_categorical(numpy.array(labels, dtype='int'))
 
-def create_model():
-    
-    model = Sequential()
-    #block 1
-    model.add(Conv2D(32, (3, 3), padding='same', activation='relu',\
-                                                    input_shape=(48, 48, 1)))
-    model.add(Conv2D(32, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    #block 2
-    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
-    model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    #block 3
-    model.add(Conv2D(128, (3, 3), padding='same', activation='relu'))
-    model.add(Conv2D(128, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    model.add(Flatten())
-    model.add(Dense(1024, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(1024, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(7, activation='softmax'))
-    
-    model.summary()
-
-
-    return model
 
 def compile_model(model):
     model.compile(loss='categorical_crossentropy',
-              optimizer=keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
+              optimizer=keras.optimizers.Adam(lr=1e-5, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
               metrics=['acc'])
 
 def train_model(model, train_data, train_labels, X_private_test,\
@@ -103,9 +74,65 @@ def train_model(model, train_data, train_labels, X_private_test,\
                         callbacks=[reduce_lr, model_checkpoint])
 
     return history
- 
+
+def VGG16():
+
+    input_shape = (48, 48, 1)
+    input = Input(shape=input_shape)
+    # Block 1
+    x = Conv2D(64, (3, 3), activation='relu', padding='same', name='conv1_1')(
+        input)
+    x = Conv2D(64, (3, 3), activation='relu', padding='same', name='conv1_2')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='pool1')(x)
+
+    # Block 2
+    x = Conv2D(128, (3, 3), activation='relu', padding='same', name='conv2_1')(
+        x)
+    x = Conv2D(128, (3, 3), activation='relu', padding='same', name='conv2_2')(
+        x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='pool2')(x)
+
+    # Block 3
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='conv3_1')(
+        x)
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='conv3_2')(
+        x)
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='conv3_3')(
+        x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='pool3')(x)
+
+    # Block 4
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv4_1')(
+        x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv4_2')(
+        x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv4_3')(
+        x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='pool4')(x)
+
+    # Block 5
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv5_1')(
+        x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv5_2')(
+        x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='conv5_3')(
+        x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='pool5')(x)
+
+    x = Flatten(name='flatten')(x)
+    x = Dense(4096, name='fc6')(x)
+    x = Activation('relu', name='fc6/relu')(x)
+    x = Dense(4096, name='fc7')(x)
+    x = Activation('relu', name='fc7/relu')(x)
+    x = Dense(7, name='fc8')(x)
+    x = Activation('softmax', name='fc8/softmax')(x)
+
+    model = Model(input, x, name='vggface_vgg16')  # load weights
+
+    return model
+
 if __name__ == '__main__':
-    model = create_model()
+    model = VGG16()
     compile_model(model)
 
     X_train, Y_train, X_private_test, Y_private_test, X_public_test, Y_public_test = read_data('fer2013.csv')
@@ -121,6 +148,6 @@ if __name__ == '__main__':
     Y_private_test = convert_label_to_category(Y_private_test)
     Y_public_test = convert_label_to_category(Y_public_test)
 
-        
+    #model.predict(X_train)    
     history = train_model(model, X_train, Y_train, X_private_test, Y_private_test)
        
